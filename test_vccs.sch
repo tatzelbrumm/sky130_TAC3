@@ -34,6 +34,7 @@ save all
 dc vb 0.01 3 0.01
 *dc temp -40 140 1
 plot v(p,m) / vr9#branch
+plot v(b,m) / vr9#branch
 plot all.vr9#branch vs B
 
 
