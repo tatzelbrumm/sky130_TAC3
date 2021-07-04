@@ -30,6 +30,17 @@ N 520 -260 640 -260 { lab=0}
 N 640 -380 640 -360 { lab=res}
 N 800 -360 800 -320 { lab=term2}
 N 800 -460 800 -420 { lab=term1}
+C {devices/bsource.sym} 520 -330 0 0 {name=Broot VAR=V FUNC="sqrt(v(pressure))"}
+C {devices/bsource.sym} 640 -330 0 0 {name=Bres VAR=V FUNC="106*(50/v(sqrtp)-1)*exp(-0.328*v(sqrtp))+15"}
+C {devices/bsource.sym} 800 -390 0 0 {name=Brvar VAR=I FUNC="V(term1,term2)/V(res)"}
+C {devices/vsource.sym} 440 -330 0 1 {name=Vp value=1}
+C {devices/title.sym} 160 -30 0 0 {name=l1 author="Christoph Maier [github:tatzelbrumm]"}
+C {devices/lab_pin.sym} 440 -380 0 0 {name=l2 lab=pressure}
+C {devices/lab_pin.sym} 440 -260 0 0 {name=l3 lab=0}
+C {devices/lab_pin.sym} 520 -380 0 0 {name=l4 lab=sqrtp}
+C {devices/lab_pin.sym} 640 -380 0 0 {name=l5 lab=res}
+C {devices/lab_pin.sym} 800 -440 0 0 {name=l6 lab=term1}
+C {devices/lab_pin.sym} 800 -340 0 0 {name=l7 lab=term2}
 C {devices/code_shown.sym} 60 -770 0 0 {name=NGSPICE
 only_toplevel=true
 value="
@@ -46,14 +57,4 @@ plot v(term1,term2) vs v(pressure)
 plot 1/v(term1,term2) vs v(pressure)
 .endc
 " }
-C {devices/title.sym} 160 -30 0 0 {name=l1 author="Christoph Maier"}
-C {devices/bsource.sym} 520 -330 0 0 {name=Broot VAR=V FUNC="sqrt(v(pressure))"}
-C {devices/vsource.sym} 440 -330 0 1 {name=Vp value=1}
-C {devices/lab_pin.sym} 440 -380 0 0 {name=l2 lab=pressure}
-C {devices/lab_pin.sym} 440 -260 0 0 {name=l3 lab=0}
-C {devices/lab_pin.sym} 520 -380 0 0 {name=l4 lab=sqrtp}
-C {devices/bsource.sym} 640 -330 0 0 {name=Bres VAR=V FUNC="106*(50/v(sqrtp)-1)*exp(-0.328*v(sqrtp))+15"}
-C {devices/bsource.sym} 800 -390 0 0 {name=Brvar VAR=I FUNC="V(term1,term2)/V(res)"}
-C {devices/lab_pin.sym} 640 -380 0 0 {name=l5 lab=res}
-C {devices/lab_pin.sym} 800 -440 0 0 {name=l6 lab=term1}
-C {devices/lab_pin.sym} 800 -340 0 0 {name=l7 lab=term2}
+
