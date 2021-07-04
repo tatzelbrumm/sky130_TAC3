@@ -1,0 +1,26 @@
+**.subckt b_source_magic
+Broot sqrtp 0 V = sqrt(v(pressure))
+Bres res 0 V = 106*(50/v(sqrtp)-1)*exp(-0.328*v(sqrtp))+15
+Brvar term1 term2 I = V(term1,term2)/V(res)
+Vp pressure 0 1
+**** begin user architecture code
+
+
+.option savecurrents
+vt2 term2 0
+it12 term2 term1 1m
+.control
+save all
+dc vp 0.01 3 0.01
+write b_source_magic.raw
+plot v(sqrtp) vs v(pressure)
+plot v(res) vs v(pressure)
+plot v(term1,term2) vs v(pressure)
+plot 1/v(term1,term2) vs v(pressure)
+.endc
+
+
+**** end user architecture code
+**.ends
+** flattened .save nodes
+.end
