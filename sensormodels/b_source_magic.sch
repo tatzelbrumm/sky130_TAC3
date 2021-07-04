@@ -33,11 +33,13 @@ N 800 -460 800 -420 { lab=term1}
 C {devices/code_shown.sym} 60 -770 0 0 {name=NGSPICE
 only_toplevel=true
 value="
+.option savecurrents
 vt2 term2 0
 it12 term2 term1 1m
 .control
 save all
 dc vp 0.01 3 0.01
+write b_source_magic.raw
 plot v(sqrtp) vs v(pressure)
 plot v(res) vs v(pressure)
 plot v(term1,term2) vs v(pressure)
@@ -45,15 +47,6 @@ plot 1/v(term1,term2) vs v(pressure)
 .endc
 " }
 C {devices/title.sym} 160 -30 0 0 {name=l1 author="Christoph Maier"}
-C {devices/code.sym} 60 -210 0 0 {name=TT_MODELS
-only_toplevel=true
-format="tcleval( @value )"
-value=".lib \\\\$::SKYWATER_MODELS\\\\/models/sky130.lib.spice tt
-
-.param mc_mm_switch=0
-.param mc_pr_switch=1
-
-"}
 C {devices/bsource.sym} 520 -330 0 0 {name=Broot VAR=V FUNC="sqrt(v(pressure))"}
 C {devices/vsource.sym} 440 -330 0 1 {name=Vp value=1}
 C {devices/lab_pin.sym} 440 -380 0 0 {name=l2 lab=pressure}
