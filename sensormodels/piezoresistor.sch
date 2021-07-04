@@ -60,6 +60,3 @@ plot all.Vr1#branch vs pressure
 " }
 C {devices/ammeter.sym} 800 -450 0 0 {name=Vr1
 }
-C {devices/ipin.sym} 280 -450 0 0 {name=p45 lab=P}
-C {devices/ipin.sym} 280 -410 0 0 {name=p46 lab=M}
-C {devices/ipin.sym} 280 -370 0 0 {name=p47 lab=B}

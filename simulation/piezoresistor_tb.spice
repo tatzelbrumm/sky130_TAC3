@@ -1,0 +1,20 @@
+**.subckt piezoresistor_tb
+R1 pres_pos pres_neg vres_pos vres_neg piezoresistor
+**.ends
+
+* expanding   symbol:  /home/mast/Progetti/Telluride2021/sky130_TAC3/piezoresistor.sym # of pins=4
+* sym_path: /home/mast/Progetti/Telluride2021/sky130_TAC3/piezoresistor.sym
+* sch_path: /home/mast/Progetti/Telluride2021/sky130_TAC3/piezoresistor.sch
+.subckt piezoresistor  pressure_pos pressure_neg resistor_pos resistor_neg
+*.ipin pressure_pos
+*.ipin pressure_neg
+*.ipin resistor_pos
+*.ipin resistor_neg
+Broot sqrtp 0 V = sqrt(v(pressure_pos)-v(pressure_neg))
+Bres res 0 V = 106*(50/v(sqrtp)-1)*exp(-0.328*v(sqrtp))+15
+Brvar net1 resistor_neg I = V(term1,term2)/V(res)
+Vr1 resistor_pos net1 0
+.ends
+
+** flattened .save nodes
+.end

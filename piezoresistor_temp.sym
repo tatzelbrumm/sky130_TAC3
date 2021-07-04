@@ -1,0 +1,46 @@
+v {xschem version=2.9.9 file_version=1.2 }
+G {}
+K {type=resistor
+format="@name @pinlist @value m=@m"
+
+verilog_format="tran @name (@@P\\\\, @@M\\\\);"
+
+tedax_format="footprint @name @footprint
+value @name @value
+device @name @device
+spicedev @name @spicedev
+spiceval @name @spiceval
+comptag @name @comptag"
+
+template="name=R1
+value=1k
+footprint=1206
+device=resistor
+m=1"
+}
+V {}
+S {}
+E {}
+L 4 -170 0 -150 0 {}
+L 4 -170 20 -150 20 {}
+L 4 -150 30 -150 40 {}
+L 4 -150 30 -142.5 27.5 {}
+L 4 -157.5 22.5 -142.5 27.5 {}
+L 4 -157.5 22.5 -142.5 17.5 {}
+L 4 -157.5 12.5 -142.5 17.5 {}
+L 4 -157.5 12.5 -142.5 7.5 {}
+L 4 -157.5 2.5 -142.5 7.5 {}
+L 4 -157.5 2.5 -142.5 -2.5 {}
+L 4 -157.5 -7.5 -142.5 -2.5 {}
+L 4 -157.5 -7.5 -150 -10 {}
+L 4 -150 -20 -150 -10 {}
+B 5 -172.5 -2.5 -167.5 2.5 {name=pressure_pos dir=in }
+B 5 -172.5 17.5 -167.5 22.5 {name=pressure_neg dir=in }
+B 5 -152.5 -22.5 -147.5 -17.5 {name=resistor_pos dir=in }
+B 5 -152.5 37.5 -147.5 42.5 {name=resistor_neg dir=in }
+B 5 -152.5 -22.5 -147.5 -17.5 {name=P dir=inout propag=0 pinnumber=1}
+T {@name} -135 -2 0 0 0.2 0.2 {}
+T {pressure_pos} -235 -14 0 0 0.2 0.2 {}
+T {pressure_neg} -235 26 0 0 0.2 0.2 {}
+T {resistor_pos} -145 -24 0 0 0.2 0.2 {}
+T {resistor_neg} -145 26 0 0 0.2 0.2 {}
