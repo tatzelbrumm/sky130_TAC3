@@ -38,5 +38,5 @@ C {devices/lab_pin.sym} 380 -380 0 0 {name=l4 lab=sqrtp}
 C {devices/lab_pin.sym} 640 -380 0 0 {name=l5 lab=res}
 C {devices/ipin.sym} 300 -360 0 0 { name=p8 lab=pressure_pos }
 C {devices/ipin.sym} 300 -300 0 0 { name=p9 lab=pressure_neg }
-C {devices/ipin.sym} 300 -500 0 0 { name=p11 lab=resistor_pos }
-C {devices/ipin.sym} 300 -440 0 0 { name=p12 lab=resistor_neg }
+C {devices/iopin.sym} 300 -500 0 1 { name=p11 lab=resistor_pos }
+C {devices/iopin.sym} 300 -440 0 1 { name=p12 lab=resistor_neg }

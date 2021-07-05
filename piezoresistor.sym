@@ -21,8 +21,8 @@ L 4 -100 30 -90 20 {}
 L 4 -100 30 -90 40 {}
 B 5 -122.5 -12.5 -117.5 -7.5 {name=pressure_pos dir=in }
 B 5 -122.5 7.5 -117.5 12.5 {name=pressure_neg dir=in }
-B 5 -92.5 -62.5 -87.5 -57.5 {name=resistor_pos dir=in }
-B 5 -92.5 57.5 -87.5 62.5 {name=resistor_neg dir=in }
+B 5 -92.5 -62.5 -87.5 -57.5 {name=resistor_pos dir=io }
+B 5 -92.5 57.5 -87.5 62.5 {name=resistor_neg dir=io}
 T {@symname} -86.5 44 0 0 0.3 0.3 {}
 T {@name} -85 -52 0 0 0.2 0.2 {}
 T {pressure_pos} -175 -24 0 0 0.2 0.2 {}
