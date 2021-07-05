@@ -20,34 +20,32 @@ K {}
 V {}
 S {}
 E {}
-T {name=ngspice 
+N 330 -70 330 -40 { lab=0}
+N 330 -80 380 -80 { lab=0}
+N 330 -80 330 -70 { lab=0}
+N 200 -100 380 -100 { lab=vres}
+N 200 -40 330 -40 { lab=0}
+N 200 -120 380 -120 { lab=0}
+N 260 -140 380 -140 { lab=pres}
+N 260 -180 260 -140 { lab=pres}
+N 200 -180 260 -180 { lab=pres}
+C {devices/code_shown.sym} 0 -460 0 0 {name=ngspice 
 only_toplevel=true 
 value=" 
 .option savecurrents
-it12 term2 term1 1m
-v1 vres_pos 0 0
-v2 vres_neg 0 0
-v3 pres_pos 0 0
-v4 pres_neg 0 0
 .control
 save all
-dc v3 0 1.8 0.01
-plot all.Vmeas
-.endc} -170 -880 0 0 0.4 0.4 {}
-N 310 -660 310 -630 { lab=vres_neg}
-N 330 -710 360 -710 { lab=pres_neg}
-N 330 -730 360 -730 { lab=pres_pos}
-N 310 -670 360 -670 { lab=vres_neg}
-N 310 -670 310 -660 { lab=vres_neg}
-N 180 -690 360 -690 { lab=vres_pos
-}
-C {devices/lab_pin.sym} 330 -730 0 0 {name=l1 
-lab=pres_pos}
-C {devices/lab_pin.sym} 330 -710 0 0 {name=l2 
-lab=pres_neg}
-C {devices/lab_pin.sym} 310 -630 0 0 {name=l4 lab=vres_neg}
-C {/home/mast/Progetti/Telluride2021/sky130_TAC3/piezoresistor.sym} 510 -700 0 0 {name=R1
-
-}
-C {devices/lab_pin.sym} 180 -690 0 0 {name=l3 sig_type=std_logic lab=vres_pos
-}
+dc vpressure 0.01 1.8 0.01 vres -2 2 1
+write piezoresistor_tb.raw
+plot all.Vres#branch 
+.endc
+"}
+C {devices/lab_pin.sym} 200 -180 0 0 {name=l1 
+lab=pres}
+C {devices/lab_pin.sym} 200 -120 0 0 {name=l2 
+lab=0}
+C {devices/lab_pin.sym} 200 -40 0 0 {name=l4 lab=0}
+C {piezoresistor.sym} 530 -110 0 0 {name=Xdut}
+C {devices/lab_pin.sym} 200 -100 0 0 {name=l3 sig_type=std_logic lab=vres}
+C {devices/vsource.sym} 200 -70 0 1 {name=Vres value=1}
+C {devices/vsource.sym} 200 -150 0 1 {name=Vpressure value=0.9}
