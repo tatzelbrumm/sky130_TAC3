@@ -63,4 +63,4 @@ op
 write test_nmos.raw
 .endc
 " }
-C {/home/mast/Progetti/Telluride2021/sky130_TAC3/piezoresistor.sym} 560 -730 0 0 {name=x1}
+C {piezoresistor.sym} 560 -730 0 0 {name=x1}
