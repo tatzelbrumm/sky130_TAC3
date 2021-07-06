@@ -62,12 +62,16 @@ N 2540 -1200 2540 -1050 { lab=vout}
 N 1950 -1080 1950 -1050 { lab=vss}
 N 1840 -1110 1920 -1110 { lab=INPUT}
 N 1840 -1050 1950 -1050 { lab=vss}
+N 1680 -1510 1680 -1470 { lab=#net2}
+N 1680 -1510 1760 -1510 { lab=#net2}
+N 1760 -1510 1760 -1480 { lab=#net2}
+N 1760 -1420 1760 -1390 { lab=vdd}
+N 1680 -1410 1680 -1390 { lab=vss}
 C {devices/code_shown.sym} 1260 -1550 0 0 {name=ngspice 
 only_toplevel=true 
 value=" 
 .option savecurrents
 vvss vss 0 0
-vvdd vdd 0 1.8
 Vin in 0 dc 0.5 ac 0.25 sin(0.5 0.25 0.1e6)
 .control
 save all
@@ -76,11 +80,12 @@ tran 0.1n 10u
 *write piezoresistor_tb.raw
 *plot -all.Vres/all.Vres#branch
 plot "vmem" "vout" Input
-
+plot all.vdd_meas#branch*all.vdd
 op
 write AXION_hillock.raw
 *wrdata piezo_current.csv all.Vres#branch
 *wrdata piezo_pressure.csv all.pres
+
 .endc
 "}
 C {sky130_fd_pr/nfet_01v8.sym} 2240 -1140 0 0 {name=M2
@@ -117,7 +122,7 @@ C {devices/lab_pin.sym} 2440 -1320 0 0 {name=l7 sig_type=std_logic lab=vdd}
 C {devices/lab_pin.sym} 2440 -1100 0 0 {name=l8 sig_type=std_logic lab=vss}
 C {devices/capa.sym} 2080 -1170 0 0 {name=C1
 m=1
-value=1p
+value=100f
 footprint=1206
 device="ceramic capacitor"}
 C {devices/lab_pin.sym} 2080 -1130 0 0 {name=l9 sig_type=std_logic lab=vss}
@@ -158,3 +163,8 @@ m=5}
 C {devices/vsource_arith.sym} 1840 -1080 0 0 {name=E1 VOL=sin(V(IN))}
 C {devices/lab_pin.sym} 1890 -1110 1 0 {name=l4 sig_type=std_logic lab=INPUT}
 C {devices/ammeter.sym} 1950 -1170 0 0 {name=Vmeas}
+C {devices/ammeter.sym} 1760 -1450 0 0 {name=vdd_meas}
+C {devices/vsource.sym} 1680 -1440 0 0 {name=V1 value=1.2
+}
+C {devices/lab_pin.sym} 1680 -1400 0 0 {name=l12 sig_type=std_logic lab=vss}
+C {devices/lab_pin.sym} 1760 -1400 0 0 {name=l13 sig_type=std_logic lab=vdd}
