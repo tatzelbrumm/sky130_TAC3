@@ -118,7 +118,6 @@ N 1710 -1200 1710 -1150 { lab=vss}
 N 1850 -1290 1850 -1260 { lab=vdd}
 N 1850 -1380 1850 -1290 { lab=vdd}
 N 1850 -1230 1940 -1260 { lab=#net6}
-N 1800 -1260 1810 -1260 { lab=#net8}
 N 1800 -1270 1800 -1260 { lab=#net8}
 N 1800 -1260 1800 -1250 { lab=#net8}
 N 1710 -1150 1710 -1130 { lab=vss}
@@ -128,6 +127,7 @@ N 1720 -1320 1720 -1200 { lab=INPUT}
 N 1720 -1200 1770 -1200 { lab=INPUT}
 N 1770 -1180 1770 -1130 { lab=vss}
 N 1770 -1310 1770 -1270 { lab=vss}
+N 1810 -1260 1820 -1300 { lab=vrest}
 C {devices/code_shown.sym} 1260 -1550 0 0 {name=ngspice 
 only_toplevel=true 
 value=" 
@@ -480,3 +480,4 @@ model=pfet_01v8
 spiceprefix=X
 }
 C {devices/lab_pin.sym} 1710 -1240 0 0 {name=l36 sig_type=std_logic lab=vss}
+C {devices/lab_pin.sym} 1820 -1300 0 0 {name=l37 lab=vrest}
