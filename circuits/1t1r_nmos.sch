@@ -20,7 +20,7 @@ K {}
 V {}
 S {}
 E {}
-N 1020 -760 1020 -720 { lab=vdd}
+N 1020 -820 1020 -780 { lab=vdd}
 N 940 -670 990 -670 { lab=pres_pos}
 N 940 -650 990 -650 { lab=pres_neg}
 N 940 -540 980 -540 { lab=sample}
@@ -52,16 +52,15 @@ sa=0 sb=0 sd=0
 model=nfet_01v8
 spiceprefix=X
 }
-C {devices/lab_pin.sym} 1020 -760 0 0 {name=l1 lab=vdd}
+C {devices/lab_pin.sym} 1020 -820 0 0 {name=l1 lab=vdd}
 C {devices/lab_pin.sym} 940 -670 0 0 {name=l2 lab=pres_pos}
 C {devices/lab_pin.sym} 940 -650 0 0 {name=l3 lab=pres_neg}
-C {devices/lab_pin.sym} 940 -540 0 0 {name=l4 lab=sample}
 C {devices/lab_pin.sym} 1020 -490 0 0 {name=l5 lab=mygnd}
 C {devices/code_shown.sym} 300 -900 0 0 {name=NGSPICE
 only_toplevel=true
 value="
 .option savecurrents
-v1 vdd 0 1.2
+v1 vdd 0 0.2
 v2 mygnd 0 0
 v3 pres_pos 0 0
 v4 pres_neg 0 0
@@ -69,12 +68,17 @@ v5 sample 0 0.5
 v6 bulk 0 0
 .control
 save all
-dc v3 0.01 5 0.01
+dc v3 0.01 140 0.01 v5 0.3 0.9 0.3
 
 plot v(out,mygnd)
+plot all.vmeas#branch
+wrdata 1t1r_voltage_transdiode_vdd0v2.csv all.out
+wrdata 1t1r_current_transdiode_vdd0v2.csv all.vmeas#branch
 op
 .endc
 "}
 C {devices/lab_pin.sym} 1020 -590 0 0 {name=l6 lab=out
 }
 C {devices/lab_pin.sym} 1040 -540 0 0 {name=l7 lab=bulk}
+C {devices/ammeter.sym} 1020 -750 0 0 {name=Vmeas}
+C {devices/lab_pin.sym} 940 -540 0 0 {name=l4 lab=sample}
