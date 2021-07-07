@@ -72,7 +72,7 @@ only_toplevel=true
 value=" 
 .option savecurrents
 vvss vss 0 0
-Vin in 0 dc 0.5 ac 0.25 sin(0.5 0.25 0.1e6)
+Vin in 0 dc 0.5 ac 0.25 sin(0.5 0.5 1e6)
 .control
 save all
 *dc vpressure 0.01 120 0.1
@@ -80,11 +80,12 @@ tran 0.1n 10u
 *write piezoresistor_tb.raw
 *plot -all.Vres/all.Vres#branch
 plot "vmem" "vout" Input
-plot all.vdd_meas#branch*all.vdd
+*plot all.vdd_meas#branch*all.vdd
+plot all.vmem#branch
 op
 write AXION_hillock.raw
-*wrdata piezo_current.csv all.Vres#branch
-*wrdata piezo_pressure.csv all.pres
+wrdata spikes_AH.csv all.vout
+wrdata pressure.csv all.Input
 
 .endc
 "}
