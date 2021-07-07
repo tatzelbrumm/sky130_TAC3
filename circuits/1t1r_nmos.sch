@@ -40,7 +40,7 @@ value=".lib \\\\$::SKYWATER_MODELS\\\\/models/sky130.lib.spice tt
 "}
 C {sky130_fd_pr/nfet_01v8.sym} 1000 -540 0 0 {name=M1
 L=0.15
-W=1
+W=5
 nf=1 
 mult=1
 ad="'int((nf+1)/2) * W/nf * 0.29'" 
@@ -61,15 +61,15 @@ C {devices/code_shown.sym} 300 -900 0 0 {name=NGSPICE
 only_toplevel=true
 value="
 .option savecurrents
-v1 vdd 0 1.8
+v1 vdd 0 1.2
 v2 mygnd 0 0
 v3 pres_pos 0 0
 v4 pres_neg 0 0
-v5 sample 0 1
+v5 sample 0 0.5
 v6 bulk 0 0
 .control
 save all
-dc v3 0.01 1.8 0.01
+dc v3 0.01 5 0.01
 
 plot v(out,mygnd)
 op
