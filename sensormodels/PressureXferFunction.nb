@@ -1,0 +1,66 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 11.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[      1489,         56]
+NotebookOptionsPosition[      1252,         43]
+NotebookOutlinePosition[      1593,         58]
+CellTagsIndexPosition[      1550,         55]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[BoxData[{
+ RowBox[{"eqn", "=", 
+  RowBox[{
+   RowBox[{"a", 
+    RowBox[{"(", 
+     RowBox[{
+      RowBox[{"b", " ", 
+       SuperscriptBox["p", 
+        RowBox[{
+         RowBox[{"-", "1"}], "/", "2"}]]}], "-", "1"}], ")"}], 
+    SuperscriptBox["\[ExponentialE]", 
+     SqrtBox[
+      RowBox[{"c", " ", "p"}]]]}], "+", "d"}]}], "\[IndentingNewLine]", 
+ RowBox[{"values", "=", 
+  RowBox[{"{", 
+   RowBox[{
+    RowBox[{"a", "\[Rule]", "106"}], ",", 
+    RowBox[{"b", "\[Rule]", "50"}], ",", 
+    RowBox[{"c", "\[Rule]", 
+     FractionBox["328", "1000"]}], ",", 
+    RowBox[{"d", "\[Rule]", "15"}]}], "}"}]}]}], "Input",
+ CellChangeTimes->{{3.8341410198124743`*^9, 3.834141272443491*^9}}]
+},
+WindowSize->{1734, 955},
+WindowMargins->{{184, Automatic}, {31, Automatic}},
+FrontEndVersion->"11.0 for Linux x86 (64-bit) (September 21, 2016)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[558, 20, 690, 21, 91, "Input"]
+}
+]
+*)
+
+(* End of internal cache information *)
+
