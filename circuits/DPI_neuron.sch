@@ -431,7 +431,23 @@ model=pfet_01v8
 spiceprefix=X
 }
 C {devices/lab_pin.sym} 2060 -1170 0 0 {name=l34 lab=vdd}
-C {/home/mast/Progetti/Telluride2021/sky130_TAC3/circuits/piezoresistor.sym} 1940 -1360 0 0 {name=x1}
+C {devices/lab_pin.sym} 2340 -1050 0 0 {name=l35 sig_type=std_logic lab=vss}
+C {piezoresistor.sym} 1890 -1320 0 0 {name=x2}
+C {sky130_fd_pr/nfet_01v8.sym} 1870 -1060 0 0 {name=M18
+L=2
+W=2
+nf=1 
+mult=1
+ad="'int((nf+1)/2) * W/nf * 0.29'" 
+pd="'2*int((nf+1)/2) * (W/nf + 0.29)'"
+as="'int((nf+2)/2) * W/nf * 0.29'" 
+ps="'2*int((nf+2)/2) * (W/nf + 0.29)'"
+nrd="'0.29 / W'" nrs="'0.29 / W'"
+sa=0 sb=0 sd=0
+model=nfet_01v8
+spiceprefix=X
+}
+C {piezoresistor.sym} 1890 -1190 0 0 {name=x1}
 C {sky130_fd_pr/pfet_01v8.sym} 1830 -1260 0 0 {name=M19
 L=2
 W=2
