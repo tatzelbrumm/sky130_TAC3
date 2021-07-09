@@ -204,14 +204,15 @@ Vin in vref dc 0 ac 0.25 sin(0 40 10)
 .control
 save all
 *dc vpressure 0.01 120 0.1
-tran 10u 1000m
+tran  10u 200m 100m
 write DPI_neuron_tatzel.raw
 wrdata spikes_DPI.csv all.vmem
 wrdata pressure_DPI.csv all.Input
 *plot -all.Vres/all.Vres#branch
-plot "vmem" 
-plot "Vna" 
-plot "Vk"
+plot vmem Vna Vk 
+*plot "vmem"
+*plot "Vna" 
+*plot "Vk"
 *plot all.vdd_meas#branch*all.vdd
 plot all.Vmeas#branch
 op
@@ -516,9 +517,7 @@ model=pfet_01v8
 spiceprefix=X
 }
 C {/home/cmaier/.xschem/sky130_TAC3/circuits/piezoresistor.sym} 2430 -1600 0 0 {name=x1}
-C {devices/isource.sym} 2140 -1040 0 1 {name=I1 value=10n
-
-}
+C {devices/isource.sym} 2140 -1040 0 1 {name=I1 value=0.1n}
 C {/home/cmaier/.xschem/sky130_TAC3/circuits/piezoresistor.sym} 2050 -1600 0 1 {name=x2}
 C {devices/lab_wire.sym} 2230 -1590 2 0 {name=l3 lab=0}
 C {devices/lab_pin.sym} 2280 -1610 0 0 {name=l4 lab=in}
