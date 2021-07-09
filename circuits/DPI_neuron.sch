@@ -198,6 +198,7 @@ C {devices/code_shown.sym} 1180 -1580 0 0 {name=ngspice
 only_toplevel=true 
 value=" 
 .option savecurrents
+.options gmin=1e-15 abstol=10f
 vvss vss 0 0
 vpref vref 0 50
 Vin in vref dc 0 ac 0.25 sin(0 40 10)
