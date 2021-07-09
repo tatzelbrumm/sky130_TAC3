@@ -201,6 +201,7 @@ N 540 -320 680 -320 { lab=refbias}
 C {devices/code_shown.sym} 40 -800 0 0 {name=ngspice 
 only_toplevel=true 
 value=" 
+.options gmin=1e-15 abstol=10f
 .option savecurrents
 vvss vss 0 0
 vpref vref 0 50
