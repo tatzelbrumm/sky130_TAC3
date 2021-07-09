@@ -114,7 +114,6 @@ N 2080 -1130 2120 -1130 { lab=vmem}
 N 1850 -1230 2050 -1260 { lab=#net4}
 N 2250 -1220 2390 -1160 { lab=Vna}
 N 2180 -1260 2180 -1250 { lab=test}
-N 2830 -730 2890 -720 { lab=#net5}
 N 2260 -1260 2320 -1250 { lab=test2}
 N 2180 -1320 2320 -1320 { lab=vdd}
 N 2320 -1030 2320 -1000 { lab=vss}
@@ -430,7 +429,7 @@ model=pfet_01v8
 spiceprefix=X
 }
 C {devices/lab_pin.sym} 2060 -1170 0 0 {name=l34 lab=vdd}
-C {/home/mast/Progetti/Telluride2021/sky130_TAC3/circuits/piezoresistor.sym} 1940 -1360 0 0 {name=x1}
+C {piezoresistor.sym} 1940 -1360 0 0 {name=x1}
 C {sky130_fd_pr/pfet_01v8.sym} 1830 -1260 0 0 {name=M19
 L=2
 W=2
