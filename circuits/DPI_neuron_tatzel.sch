@@ -206,6 +206,8 @@ save all
 *dc vpressure 0.01 120 0.1
 tran 10u 1000m
 write DPI_neuron_tatzel.raw
+wrdata spikes_DPI.csv all.vmem
+wrdata pressure_DPI.csv all.Input
 *plot -all.Vres/all.Vres#branch
 plot "vmem" 
 plot "Vna" 
@@ -213,9 +215,7 @@ plot "Vk"
 *plot all.vdd_meas#branch*all.vdd
 plot all.Vmeas#branch
 op
-write DPI.raw
-wrdata spikes_DPI.csv all.vmem
-wrdata pressure_DPI.csv all.Input
+write DPI_neuron_tatzel.op.raw
 
 .endc
 "}
