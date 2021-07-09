@@ -54,7 +54,7 @@ N 2230 -1170 2230 -1100 { lab=vmem}
 N 2320 -1110 2340 -1110 { lab=vss}
 N 2080 -1060 2080 -1030 { lab=vss}
 N 2230 -1070 2230 -1030 { lab=vss}
-N 2160 -1070 2190 -1070 { lab=vss
+N 2160 -1070 2190 -1070 { lab=Vk
 }
 N 2140 -1110 2180 -1110 { lab=vss}
 N 2140 -1110 2140 -1020 { lab=vss}
@@ -112,7 +112,6 @@ N 2280 -1070 2280 -1060 { lab=test3}
 N 2120 -1170 2120 -1130 { lab=vmem}
 N 2080 -1130 2120 -1130 { lab=vmem}
 N 1850 -1230 2050 -1260 { lab=#net4}
-N 2160 -1070 2160 -1000 { lab=vss}
 N 2250 -1220 2390 -1160 { lab=Vna}
 N 2180 -1260 2180 -1250 { lab=test}
 N 2830 -730 2890 -720 { lab=#net5}
@@ -131,7 +130,7 @@ v4 vdd 0 pulse(0 1.2 1u 1u 1u 1 1)
 .control
 save all
 *dc vpressure 0.01 120 0.1
-tran 100u 1
+tran 1u 1
 *write piezoresistor_tb.raw
 *plot -all.Vres/all.Vres#branch
 plot "vmem" "Vna" "Vk"
@@ -431,23 +430,7 @@ model=pfet_01v8
 spiceprefix=X
 }
 C {devices/lab_pin.sym} 2060 -1170 0 0 {name=l34 lab=vdd}
-C {devices/lab_pin.sym} 2340 -1050 0 0 {name=l35 sig_type=std_logic lab=vss}
-C {piezoresistor.sym} 1890 -1320 0 0 {name=x2}
-C {sky130_fd_pr/nfet_01v8.sym} 1870 -1060 0 0 {name=M18
-L=2
-W=2
-nf=1 
-mult=1
-ad="'int((nf+1)/2) * W/nf * 0.29'" 
-pd="'2*int((nf+1)/2) * (W/nf + 0.29)'"
-as="'int((nf+2)/2) * W/nf * 0.29'" 
-ps="'2*int((nf+2)/2) * (W/nf + 0.29)'"
-nrd="'0.29 / W'" nrs="'0.29 / W'"
-sa=0 sb=0 sd=0
-model=nfet_01v8
-spiceprefix=X
-}
-C {piezoresistor.sym} 1890 -1190 0 0 {name=x1}
+C {/home/mast/Progetti/Telluride2021/sky130_TAC3/circuits/piezoresistor.sym} 1940 -1360 0 0 {name=x1}
 C {sky130_fd_pr/pfet_01v8.sym} 1830 -1260 0 0 {name=M19
 L=2
 W=2
@@ -474,3 +457,4 @@ C {devices/vsource.sym} 1640 -1290 0 0 {name=V3 value="pulse(0 100n 10u 1u 1u 1 
 C {devices/lab_pin.sym} 2180 -1260 0 0 {name=l5 sig_type=std_logic lab=test}
 C {devices/lab_pin.sym} 2260 -1260 0 0 {name=l12 sig_type=std_logic lab=test2}
 C {devices/lab_pin.sym} 2280 -1070 0 0 {name=l13 sig_type=std_logic lab=test3}
+C {devices/lab_pin.sym} 2180 -1070 0 0 {name=l14 sig_type=std_logic lab=Vk}
