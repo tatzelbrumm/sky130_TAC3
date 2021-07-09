@@ -200,11 +200,11 @@ value="
 .option savecurrents
 vvss vss 0 0
 vpref vref 0 50
-Vin in vref dc 0 ac 0.25 sin(0 40 10)
+Vin in vref dc 0 ac 0.25 sin(0 40 1)
 .control
 save all
 *dc vpressure 0.01 120 0.1
-tran  10u 200m 100m
+tran  10u 2
 write DPI_neuron_tatzel.raw
 wrdata spikes_DPI.csv all.vmem
 wrdata pressure_DPI.csv all.Input
@@ -215,6 +215,7 @@ plot vmem Vna Vk
 *plot "Vk"
 *plot all.vdd_meas#branch*all.vdd
 plot all.Vmeas#branch
+plot v(vdd,resbias) v(vdd,refbias)
 op
 write DPI_neuron_tatzel.op.raw
 
