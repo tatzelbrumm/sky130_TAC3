@@ -204,26 +204,22 @@ value="
 .options gmin=1e-15 abstol=10f
 .option savecurrents
 vvss vss 0 0
-vpref vref 0 50
-Vin in vref dc 0 ac 0.25 sin(0 40 1)
+vpref vref 0 60
+Vin in vref dc 0 ac 0.25 sin(0 55 1)
 .control
 save all
+op
+write DPI_neuron_tatzel.op.raw
 *dc vpressure 0.01 120 0.1
 tran  10u 2
 write DPI_neuron_tatzel.raw
 wrdata spikes_DPI.csv all.vmem
 wrdata pressure_DPI.csv all.Input
-*plot -all.Vres/all.Vres#branch
-plot vmem Vna Vk 
-*plot "vmem"
-*plot "Vna" 
-*plot "Vk"
-*plot all.vdd_meas#branch*all.vdd
+*plot -all.Vres/all.Vres#branch 
+plot v(in)
 plot all.Vmeas#branch
-plot v(vdd,resbias) v(vdd,refbias)
-op
-write DPI_neuron_tatzel.op.raw
-
+plot vmem Vna Vk
+*plot all.vdd_meas#branch*all.vdd
 .endc
 "}
 C {devices/code.sym} 150 -260 0 0 {name=TT_MODELS
