@@ -7,7 +7,7 @@ E {}
 N 900 -480 920 -480 { lab=vdd}
 N 920 -540 920 -480 { lab=vdd}
 N 900 -540 900 -510 { lab=vdd}
-N 840 -480 860 -480 { lab=#net1}
+N 840 -480 860 -480 { lab=vkick}
 N 740 -340 970 -340 { lab=vbn}
 N 400 -480 420 -480 { lab=vdd}
 N 400 -540 400 -480 { lab=vdd}
@@ -17,7 +17,7 @@ N 350 -100 420 -100 { lab=vss}
 N 740 -480 760 -480 { lab=vdd}
 N 760 -540 760 -480 { lab=vdd}
 N 740 -540 740 -510 { lab=vdd}
-N 680 -480 700 -480 { lab=#net1}
+N 680 -480 700 -480 { lab=vkick}
 N 900 -160 920 -160 { lab=vss}
 N 920 -160 920 -100 { lab=vss}
 N 900 -130 900 -100 { lab=vss}
@@ -30,9 +30,9 @@ N 900 -220 970 -220 { lab=vbr}
 N 580 -420 970 -420 { lab=vbp}
 N 480 -480 480 -420 { lab=vbp}
 N 460 -480 480 -480 { lab=vbp}
-N 680 -480 680 -380 { lab=#net1}
-N 840 -480 840 -380 { lab=#net1}
-N 420 -450 420 -380 { lab=#net1}
+N 680 -480 680 -380 { lab=vkick}
+N 840 -480 840 -380 { lab=vkick}
+N 420 -450 420 -380 { lab=vkick}
 N 740 -450 740 -340 { lab=vbn}
 N 900 -450 900 -220 { lab=vbr}
 N 350 -240 380 -240 { lab=disable}
@@ -47,9 +47,9 @@ N 680 -160 700 -160 { lab=disable}
 N 680 -240 840 -240 { lab=disable}
 N 840 -240 840 -160 { lab=disable}
 N 840 -160 860 -160 { lab=disable}
-N 680 -380 840 -380 { lab=#net1}
-N 420 -380 680 -380 { lab=#net1}
-N 420 -380 420 -300 { lab=#net1}
+N 680 -380 840 -380 { lab=vkick}
+N 420 -380 680 -380 { lab=vkick}
+N 420 -380 420 -300 { lab=vkick}
 N 580 -420 580 -300 { lab=vbp}
 N 540 -260 550 -260 { lab=vdd}
 N 540 -540 540 -260 { lab=vdd}
@@ -111,18 +111,19 @@ model=pfet_01v8
 spiceprefix=X
 }
 C {sky130_fd_pr/nfet_01v8.sym} 420 -280 1 0 {name=M20
-L=4
-W=4 
+L=40
+W=40
 nf=1 mult=1
 model=nfet_01v8
 spiceprefix=X
 }
 C {sky130_fd_pr/nfet_01v8.sym} 580 -280 1 0 {name=M26
-L=4
-W=4 
+L=40
+W=40 
 nf=1 mult=1
 model=nfet_01v8
 spiceprefix=X
 }
 C {devices/iopin.sym} 960 -220 0 0 {name=p5 lab=vbr}
 C {devices/ipin.sym} 360 -240 0 0 {name=p6 lab=disable}
+C {devices/lab_wire.sym} 500 -380 0 0 {name=l11 lab=vkick}

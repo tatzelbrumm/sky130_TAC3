@@ -57,56 +57,56 @@ N 580 -540 720 -540 { lab=vdd}
 N 720 -540 740 -540 { lab=vdd}
 N 560 -540 580 -540 { lab=vdd}
 N 800 -340 970 -340 { lab=vbn}
-N 900 -420 970 -420 { lab=vbp}
 N 510 -540 560 -540 { lab=vdd}
 N 510 -100 560 -100 { lab=vss}
 N 840 -480 840 -420 { lab=vbp}
 N 640 -220 970 -220 { lab=vbr}
+N 900 -420 970 -420 { lab=vbp}
 C {devices/title.sym} 160 -40 0 0 {name=l1 author="Christoph Maier"}
 C {sky130_fd_pr/nfet_01v8.sym} 880 -280 0 0 {name=M10
-L=2
+L=20
 W=1  
 nf=1 mult=1
 model=nfet_01v8
 spiceprefix=X
 }
 C {sky130_fd_pr/pfet_01v8.sym} 880 -480 0 0 {name=M12
-L=1
+L=20
 W=1
 nf=1 mult=1
 model=pfet_01v8
 spiceprefix=X
 }
 C {sky130_fd_pr/nfet_01v8.sym} 760 -280 0 1 {name=M11
-L=2
+L=20
 W=1  
 nf=1 mult=4
 model=nfet_01v8
 spiceprefix=X
 }
 C {sky130_fd_pr/pfet_01v8.sym} 760 -480 0 1 {name=M13
-L=1
+L=20
 W=1
 nf=1 mult=4
 model=pfet_01v8
 spiceprefix=X
 }
 C {sky130_fd_pr/pfet_01v8.sym} 600 -480 0 1 {name=M14
-L=1
+L=20
 W=1
 nf=1 mult=1
 model=pfet_01v8
 spiceprefix=X
 }
 C {sky130_fd_pr/nfet_01v8.sym} 880 -160 0 0 {name=M16
-L=24
+L=100
 W=1  
 nf=1 mult=1
 model=nfet_01v8
 spiceprefix=X
 }
 C {sky130_fd_pr/nfet_01v8.sym} 600 -160 0 1 {name=M15
-L=24
+L=100
 W=1  
 nf=1 mult=1
 model=nfet_01v8
