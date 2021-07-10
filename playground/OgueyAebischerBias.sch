@@ -60,6 +60,7 @@ N 800 -340 970 -340 { lab=vbn}
 N 900 -420 970 -420 { lab=vbp}
 N 510 -540 560 -540 { lab=vdd}
 N 510 -100 560 -100 { lab=vss}
+N 840 -480 840 -420 {}
 C {devices/title.sym} 160 -40 0 0 {name=l1 author="Christoph Maier"}
 C {sky130_fd_pr/nfet_01v8.sym} 880 -280 0 0 {name=M10
 L=2
