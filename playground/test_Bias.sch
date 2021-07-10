@@ -54,7 +54,7 @@ save all
 tran 10u 2
 write test_Bias.raw
 plot vdd vbp vbn vbr xbias.vres
-plot v.xbias.vi1#branch v.xbias.vi4#branch v.xbias.viaux#branch v.xbias.vidum#branch
+plot v.xbias.vi1#branch v.xbias.vi4#branch v.xbias.viaux#branch
 .endc
 "}
 C {devices/code.sym} 110 -210 0 0 {name=TT_MODELS
