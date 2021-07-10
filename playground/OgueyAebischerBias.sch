@@ -68,35 +68,35 @@ N 900 -250 900 -190 { lab=vres}
 N 800 -420 840 -420 { lab=vbp}
 C {devices/title.sym} 160 -40 0 0 {name=l1 author="Christoph Maier"}
 C {sky130_fd_pr/nfet_01v8.sym} 880 -280 0 0 {name=M10
-L=10
+L=1
 W=1  
 nf=1 mult=4
 model=nfet_01v8
 spiceprefix=X
 }
 C {sky130_fd_pr/pfet_01v8.sym} 880 -480 0 0 {name=M12
-L=10
+L=1
 W=1
 nf=1 mult=1
 model=pfet_01v8
 spiceprefix=X
 }
 C {sky130_fd_pr/nfet_01v8.sym} 760 -280 0 1 {name=M11
-L=10
+L=1
 W=1  
 nf=1 mult=1
 model=nfet_01v8
 spiceprefix=X
 }
 C {sky130_fd_pr/pfet_01v8.sym} 760 -480 0 1 {name=M13
-L=10
+L=1
 W=1
 nf=1 mult=4
 model=pfet_01v8
 spiceprefix=X
 }
 C {sky130_fd_pr/pfet_01v8.sym} 600 -480 0 1 {name=M14
-L=10
+L=1
 W=1
 nf=1 mult=2
 model=pfet_01v8
