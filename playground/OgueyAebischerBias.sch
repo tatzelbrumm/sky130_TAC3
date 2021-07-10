@@ -10,7 +10,6 @@ N 900 -130 900 -100 { lab=vss}
 N 560 -160 580 -160 { lab=vss}
 N 560 -160 560 -100 { lab=vss}
 N 580 -130 580 -100 { lab=vss}
-N 900 -250 900 -190 { lab=#net1}
 N 740 -250 740 -100 { lab=vss}
 N 720 -280 740 -280 { lab=vss}
 N 720 -280 720 -100 { lab=vss}
@@ -26,7 +25,7 @@ N 640 -420 800 -420 { lab=vbp}
 N 800 -480 800 -420 { lab=vbp}
 N 780 -480 800 -480 { lab=vbp}
 N 840 -480 860 -480 { lab=vbp}
-N 800 -420 900 -420 { lab=vbp}
+N 840 -420 900 -420 { lab=vbp}
 N 800 -280 860 -280 { lab=vbn}
 N 800 -340 800 -280 { lab=vbn}
 N 740 -340 800 -340 { lab=vbn}
@@ -59,58 +58,75 @@ N 510 -100 560 -100 { lab=vss}
 N 840 -480 840 -420 { lab=vbp}
 N 640 -220 970 -220 { lab=vbr}
 N 900 -420 970 -420 { lab=vbp}
-N 580 -450 580 -410 { lab=#net2}
+N 580 -450 580 -410 { lab=#net1}
 N 580 -350 580 -220 { lab=vbr}
 N 740 -350 740 -340 { lab=vbn}
-N 740 -450 740 -410 { lab=#net3}
+N 740 -450 740 -410 { lab=#net2}
 N 900 -420 900 -410 { lab=vbp}
-N 900 -350 900 -310 { lab=#net4}
+N 900 -350 900 -310 { lab=#net3}
+N 1020 -130 1020 -100 { lab=vss}
+N 920 -100 1020 -100 { lab=vss}
+N 1020 -200 1020 -190 { lab=vres}
+N 900 -200 1020 -200 { lab=vres}
+N 900 -250 900 -200 { lab=vres}
+N 1040 -460 1040 -200 { lab=vres}
+N 1020 -200 1040 -200 { lab=vres}
+N 900 -190 1000 -190 { lab=#net4}
+N 1000 -280 1000 -190 { lab=#net4}
+N 1000 -280 1080 -280 { lab=#net4}
+N 1080 -350 1080 -280 { lab=#net4}
+N 1080 -450 1080 -410 { lab=#net5}
+N 1080 -540 1080 -510 { lab=vdd}
+N 1040 -540 1080 -540 { lab=vdd}
+N 1040 -540 1040 -500 { lab=vdd}
+N 800 -420 840 -420 { lab=vbp}
+N 920 -540 1040 -540 { lab=vdd}
 C {devices/title.sym} 160 -40 0 0 {name=l1 author="Christoph Maier"}
 C {sky130_fd_pr/nfet_01v8.sym} 880 -280 0 0 {name=M10
-L=20
+L=10
 W=1  
 nf=1 mult=4
 model=nfet_01v8
 spiceprefix=X
 }
 C {sky130_fd_pr/pfet_01v8.sym} 880 -480 0 0 {name=M12
-L=20
+L=10
 W=1
 nf=1 mult=1
 model=pfet_01v8
 spiceprefix=X
 }
 C {sky130_fd_pr/nfet_01v8.sym} 760 -280 0 1 {name=M11
-L=20
+L=10
 W=1  
 nf=1 mult=1
 model=nfet_01v8
 spiceprefix=X
 }
 C {sky130_fd_pr/pfet_01v8.sym} 760 -480 0 1 {name=M13
-L=20
+L=10
 W=1
 nf=1 mult=4
 model=pfet_01v8
 spiceprefix=X
 }
 C {sky130_fd_pr/pfet_01v8.sym} 600 -480 0 1 {name=M14
-L=20
+L=10
 W=1
 nf=1 mult=1
 model=pfet_01v8
 spiceprefix=X
 }
 C {sky130_fd_pr/nfet_01v8.sym} 880 -160 0 0 {name=M16
-L=100
-W=1  
+L=80
+W=0.5  
 nf=1 mult=1
 model=nfet_01v8
 spiceprefix=X
 }
 C {sky130_fd_pr/nfet_01v8.sym} 600 -160 0 1 {name=M15
-L=100
-W=1  
+L=80
+W=0.5
 nf=1 mult=1
 model=nfet_01v8
 spiceprefix=X
@@ -123,3 +139,11 @@ C {devices/iopin.sym} 960 -220 0 0 {name=p5 lab=vbr}
 C {devices/ammeter.sym} 900 -380 0 0 {name=Vi1}
 C {devices/ammeter.sym} 740 -380 0 0 {name=Vi4}
 C {devices/ammeter.sym} 580 -380 0 0 {name=Viaux}
+C {devices/res.sym} 1020 -160 0 0 {name=R1
+value=10000k
+footprint=1206
+device=resistor
+m=1}
+C {devices/lab_pin.sym} 900 -240 0 0 {name=l2 lab=vres}
+C {devices/ammeter.sym} 1080 -380 0 0 {name=Vidum}
+C {devices/vcvs.sym} 1080 -480 0 0 {name=E1 value=1}

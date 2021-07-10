@@ -37,7 +37,7 @@ C {devices/title.sym} 160 -40 0 0 {name=l1 author="Christoph Maier"}
 C {OgueyAebischerBias.sym} 760 -340 0 0 {name=xbias}
 C {ToBiasStartup.sym} 540 -340 0 0 {name=xstart}
 C {devices/gnd.sym} 380 -180 0 0 {name=l2 lab=0}
-C {devices/vsource.sym} 380 -450 0 1 {name=VDD value="0 pwl(0 0 100u 1.2)" }
+C {devices/vsource.sym} 380 -450 0 1 {name=VDD value="1.2 pwl(0 0 100u 1.2)" }
 C {devices/vsource.sym} 440 -270 0 1 {name=Voff value=0}
 C {devices/lab_wire.sym} 470 -500 0 0 {name=l3 lab=vdd}
 C {devices/lab_wire.sym} 470 -320 0 0 {name=l5 lab=disable}
@@ -47,13 +47,14 @@ C {devices/lab_wire.sym} 690 -240 0 0 {name=l8 lab=vbr}
 C {devices/code_shown.sym} 0 -750 0 0 {name=ngspice 
 only_toplevel=true 
 value=" 
-.options gmin=1e-15 abstol=100f
+.options gmin=1e-15 abstol=1p
 .option savecurrents
 .control
 save all
-tran 1m 2
+tran 10u 2
 write test_Bias.raw
-plot vdd vbp vbn vbr
+plot vdd vbp vbn vbr xbias.vres
+plot v.xbias.vi1#branch v.xbias.vi4#branch v.xbias.viaux#branch v.xbias.vidum#branch
 .endc
 "}
 C {devices/code.sym} 110 -210 0 0 {name=TT_MODELS
