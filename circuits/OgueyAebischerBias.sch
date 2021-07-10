@@ -57,19 +57,10 @@ N 580 -540 720 -540 { lab=vdd}
 N 720 -540 740 -540 { lab=vdd}
 N 560 -540 580 -540 { lab=vdd}
 N 800 -340 970 -340 { lab=vbn}
-N 900 -420 970 -420 {}
-N 510 -540 560 -540 {}
-N 510 -100 560 -100 {}
+N 900 -420 970 -420 { lab=vbp}
+N 510 -540 560 -540 { lab=vdd}
+N 510 -100 560 -100 { lab=vss}
 C {devices/title.sym} 160 -40 0 0 {name=l1 author="Christoph Maier"}
-C {devices/code.sym} -10 -220 0 0 {name=TT_MODELS
-only_toplevel=true
-format="tcleval( @value )"
-value=".lib \\\\$::SKYWATER_MODELS\\\\/models/sky130.lib.spice tt
-
-.param mc_mm_switch=0
-.param mc_pr_switch=1
-
-"}
 C {sky130_fd_pr/nfet_01v8.sym} 880 -280 0 0 {name=M10
 L=2
 W=1  
