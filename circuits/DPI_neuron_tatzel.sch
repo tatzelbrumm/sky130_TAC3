@@ -1,20 +1,4 @@
-v {xschem version=2.9.9 file_version=1.2 
-
-* Copyright 2020 Stefan Frederik Schippers
-* 
-* Licensed under the Apache License, Version 2.0 (the "License");
-* you may not use this file except in compliance with the License.
-* You may obtain a copy of the License at
-*
-*     https://www.apache.org/licenses/LICENSE-2.0
-*
-* Unless required by applicable law or agreed to in writing, software
-* distributed under the License is distributed on an "AS IS" BASIS,
-* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-* See the License for the specific language governing permissions and
-* limitations under the License.
-
-}
+v {xschem version=2.9.9 file_version=1.2 }
 G {}
 K {}
 V {}
@@ -196,7 +180,6 @@ N 1440 -1000 1440 -960 { lab=#net8}
 N 540 -920 540 -530 { lab=vdd}
 N 1240 -920 1300 -920 { lab=vdd}
 N 740 -960 740 -660 { lab=#net8}
-N 1700 -830 1700 -640 { lab=#net9}
 N 1640 -1000 1640 -680 { lab=vss}
 N 1620 -680 1640 -680 { lab=vss}
 N 1460 -1000 1460 -680 { lab=vss}
@@ -205,7 +188,6 @@ N 1620 -1000 1620 -680 { lab=vss}
 N 1600 -1000 1600 -680 { lab=vss}
 N 1580 -1000 1580 -680 { lab=vss}
 N 1560 -1000 1560 -680 { lab=vss}
-N 1540 -1000 1540 -680 { lab=vss}
 N 1520 -1000 1520 -680 { lab=vss}
 N 1500 -1000 1500 -680 { lab=vss}
 N 1480 -1000 1480 -680 { lab=vss}
@@ -214,20 +196,24 @@ N 1360 -200 1460 -200 { lab=vss}
 N 1600 -680 1620 -680 { lab=vss}
 N 1580 -680 1600 -680 { lab=vss}
 N 1560 -680 1580 -680 { lab=vss}
-N 1540 -680 1560 -680 { lab=vss}
-N 1520 -680 1540 -680 { lab=vss}
+N 1520 -680 1560 -680 { lab=vss}
 N 1500 -680 1520 -680 { lab=vss}
 N 1480 -680 1500 -680 { lab=vss}
 N 1460 -680 1480 -680 { lab=vss}
 N 680 -480 700 -480 { lab=resbias}
-N 740 -600 740 -530 { lab=#net8}
+N 740 -600 740 -530 { lab=#net9}
 N 540 -440 600 -440 { lab=refbias}
 N 600 -520 600 -440 { lab=refbias}
 N 600 -520 700 -520 { lab=refbias}
 N 680 -480 680 -440 { lab=resbias}
 N 680 -440 740 -440 { lab=resbias}
 N 740 -470 740 -440 { lab=resbias}
-N 740 -440 740 -370 {}
+N 740 -440 740 -370 { lab=resbias}
+N 1540 -1000 1540 -660 { lab=#net10}
+N 1540 -660 1700 -660 { lab=#net10}
+N 1700 -830 1700 -680 { lab=vss}
+N 1640 -680 1700 -680 { lab=vss}
+N 1700 -660 1700 -640 { lab=#net10}
 C {devices/code_shown.sym} 40 -800 0 0 {name=ngspice 
 only_toplevel=true 
 value=" 
