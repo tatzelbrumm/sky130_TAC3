@@ -21,6 +21,13 @@ based on measurement data]
 Except for low pressure, transconductance equations for a MOS differential pair
 [in weak inversion](./sensormodels/PressureXferFunctionWeakInv.pdf) and [in strong inversion](./sensormodels/PressureXferFunctionStrongInv.pdf) fit the data reasonably well.
 
+### circuits
+
+* `1t1r_nmos`
+* `Wheatstone`
+* `AxionHillock`
+* `DPI_neuron`
+
 ### playground
 
 * `nfet_03v3_gmtest`  
