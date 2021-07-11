@@ -183,7 +183,6 @@ N 1700 -440 1720 -440 { lab=vdd}
 N 740 -200 1000 -200 { lab=vss}
 N 540 -200 740 -200 { lab=vss}
 N 740 -250 740 -200 { lab=vss}
-N 1700 -830 1700 -540 { lab=vmem}
 N 1700 -920 1700 -890 { lab=vdd}
 N 1360 -920 1700 -920 { lab=vdd}
 N 680 -480 700 -480 { lab=refbias}
@@ -200,7 +199,9 @@ N 540 -440 540 -370 { lab=refbias}
 N 540 -920 540 -530 { lab=vdd}
 N 680 -560 680 -520 { lab=vdd}
 N 540 -560 680 -560 { lab=vdd}
-C {devices/code_shown.sym} 40 -800 0 0 {name=ngspice 
+N 1700 -830 1700 -720 { lab=#net9}
+N 1700 -660 1700 -540 { lab=vmem}
+C {devices/code_shown.sym} 0 -890 0 0 {name=ngspice 
 only_toplevel=true 
 value=" 
 .options gmin=1e-15 abstol=10f
@@ -220,11 +221,13 @@ wrdata pressure_DPI.csv all.Input
 *plot -all.Vres/all.Vres#branch 
 plot v(in)
 plot all.Vmeas#branch
+plot all.Vineuron#branch
+plot Vmeas#branch/Vineuron#branch
 plot vmem Vna Vk
 *plot all.vdd_meas#branch*all.vdd
 .endc
 "}
-C {devices/code.sym} 150 -260 0 0 {name=TT_MODELS
+C {devices/code.sym} 110 -350 0 0 {name=TT_MODELS
 only_toplevel=true
 format="tcleval( @value )"
 value=".lib \\\\$::SKYWATER_MODELS\\\\/models/sky130.lib.spice tt
@@ -503,3 +506,4 @@ C {devices/lab_wire.sym} 1540 -920 0 0 {name=l11 lab=vdd}
 C {devices/lab_wire.sym} 1540 -200 0 0 {name=l12 lab=vss}
 C {devices/cccs.sym} 1700 -860 0 1 {name=F1 vnam=vmeas value=1u}
 C {devices/vcvs.sym} 740 -500 0 0 {name=E1 value=1}
+C {devices/ammeter.sym} 1700 -690 0 1 {name=Vineuron}
