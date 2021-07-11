@@ -186,19 +186,20 @@ N 740 -250 740 -200 { lab=vss}
 N 1700 -830 1700 -540 { lab=vmem}
 N 1700 -920 1700 -890 { lab=vdd}
 N 1360 -920 1700 -920 { lab=vdd}
-N 680 -840 700 -840 { lab=refbias}
-N 680 -880 700 -880 { lab=vdd}
+N 680 -480 700 -480 { lab=refbias}
+N 680 -520 700 -520 { lab=vdd}
 N 540 -250 540 -200 { lab=vss}
 N 540 -920 740 -920 { lab=vdd}
-N 680 -840 680 -800 { lab=refbias}
-N 540 -800 680 -800 { lab=refbias}
-N 540 -830 540 -800 { lab=refbias}
-N 740 -600 740 -370 { lab=resbias}
+N 680 -480 680 -440 { lab=refbias}
+N 540 -440 680 -440 { lab=refbias}
+N 540 -470 540 -440 { lab=refbias}
 N 740 -920 740 -890 { lab=vdd}
-N 540 -920 540 -890 { lab=vdd}
-N 740 -830 740 -660 { lab=#net8}
-N 680 -920 680 -880 { lab=vdd}
-N 540 -800 540 -370 { lab=refbias}
+N 740 -830 740 -530 { lab=#net8}
+N 740 -470 740 -360 { lab=resbias}
+N 540 -440 540 -370 { lab=refbias}
+N 540 -920 540 -530 { lab=vdd}
+N 680 -560 680 -520 { lab=vdd}
+N 540 -560 680 -560 { lab=vdd}
 C {devices/code_shown.sym} 40 -800 0 0 {name=ngspice 
 only_toplevel=true 
 value=" 
@@ -232,7 +233,7 @@ value=".lib \\\\$::SKYWATER_MODELS\\\\/models/sky130.lib.spice tt
 .param mc_pr_switch=1
 
 "}
-C {devices/ammeter.sym} 740 -630 0 1 {name=Vmeas}
+C {devices/ammeter.sym} 740 -860 0 1 {name=Vmeas}
 C {devices/ammeter.sym} 1000 -260 2 0 {name=vdd_meas}
 C {devices/vsource.sym} 1000 -860 0 0 {name=V1 value=1.2
 }
@@ -490,7 +491,7 @@ model=pfet_01v8
 spiceprefix=X
 }
 C {/home/cmaier/.xschem/sky130_TAC3/circuits/piezoresistor.sym} 830 -310 0 0 {name=x1}
-C {devices/isource.sym} 540 -860 0 1 {name=I1 value=1u}
+C {devices/isource.sym} 540 -500 0 1 {name=I1 value=1u}
 C {/home/cmaier/.xschem/sky130_TAC3/circuits/piezoresistor.sym} 450 -310 0 1 {name=x2}
 C {devices/lab_wire.sym} 630 -300 2 0 {name=l3 lab=0}
 C {devices/lab_pin.sym} 680 -320 0 0 {name=l4 lab=in}
@@ -501,4 +502,4 @@ C {devices/title.sym} 200 -80 0 0 {name=l10 author="Michele Mastella, Christoph 
 C {devices/lab_wire.sym} 1540 -920 0 0 {name=l11 lab=vdd}
 C {devices/lab_wire.sym} 1540 -200 0 0 {name=l12 lab=vss}
 C {devices/cccs.sym} 1700 -860 0 1 {name=F1 vnam=vmeas value=1u}
-C {devices/vcvs.sym} 740 -860 0 0 {name=E1 value=1}
+C {devices/vcvs.sym} 740 -500 0 0 {name=E1 value=1}
