@@ -18,7 +18,8 @@ A realization of a sensor resistance function that Ella Janotte shared:
 Attempts to fit the *conductance* instead of the resistance of the piezosensor, 
 based on measurement data]  
 ![Measurement data](./sensormodels/GTacData.png)  
-Except for low 
+Except for low pressure, transconductance equations for a MOS differential pair
+[in weak inversion](./sensormodels/PressureXferFunctionWeakInv.pdf) and [in strong inversion](./sensormodels/PressureXferFunctionStrongInv.pdf) fit the data reasonably well.
 
 ### playground
 
