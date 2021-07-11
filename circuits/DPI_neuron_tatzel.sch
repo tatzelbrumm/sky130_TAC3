@@ -132,6 +132,7 @@ N 2140 -260 2160 -260 { lab=#net4}
 N 2140 -380 2140 -260 { lab=#net4}
 N 2140 -380 2200 -380 { lab=#net4}
 N 1120 -920 1240 -920 { lab=vdd}
+N 1300 -920 1360 -920 { lab=vdd}
 N 2020 -920 2040 -920 { lab=vdd}
 N 2040 -920 2200 -920 { lab=vdd}
 N 2220 -920 2340 -920 { lab=vdd}
@@ -169,6 +170,7 @@ N 1000 -200 1100 -200 { lab=vss}
 N 2340 -830 2340 -800 { lab=#net2}
 N 2140 -740 2140 -540 { lab=vmem}
 N 1800 -920 2020 -920 { lab=vdd}
+N 1460 -200 1700 -200 { lab=vss}
 N 570 -300 710 -300 { lab=0}
 N 680 -320 710 -320 { lab=in}
 N 570 -320 600 -320 { lab=vref}
@@ -182,25 +184,50 @@ N 540 -200 740 -200 { lab=vss}
 N 740 -250 740 -200 { lab=vss}
 N 1700 -920 1700 -890 { lab=vdd}
 N 1360 -920 1700 -920 { lab=vdd}
-N 680 -480 700 -480 { lab=resbias}
 N 540 -250 540 -200 { lab=vss}
-N 540 -470 540 -440 { lab=refbias}
-N 740 -440 740 -360 { lab=resbias}
-N 540 -440 540 -370 { lab=refbias}
-N 740 -600 740 -530 { lab=#net8}
-N 540 -920 540 -530 { lab=vdd}
-N 1240 -920 1360 -920 { lab=vdd}
-N 1700 -830 1700 -640 { lab=#net9}
-N 1700 -580 1700 -540 { lab=vmem}
-N 1360 -200 1700 -200 { lab=vss}
 N 540 -920 1000 -920 { lab=vdd}
+N 540 -470 540 -440 { lab=refbias}
+N 540 -440 540 -370 { lab=refbias}
+N 1540 -1140 1540 -1100 { lab=vdd}
+N 1300 -1140 1540 -1140 { lab=vdd}
+N 1300 -1140 1300 -920 { lab=vdd}
+N 740 -960 1440 -960 { lab=#net8}
+N 1440 -1000 1440 -960 { lab=#net8}
+N 540 -920 540 -530 { lab=vdd}
+N 1240 -920 1300 -920 { lab=vdd}
+N 740 -960 740 -660 { lab=#net8}
+N 1700 -830 1700 -640 { lab=#net9}
+N 1640 -1000 1640 -680 { lab=vss}
+N 1620 -680 1640 -680 { lab=vss}
+N 1460 -1000 1460 -680 { lab=vss}
+N 1460 -680 1460 -200 { lab=vss}
+N 1620 -1000 1620 -680 { lab=vss}
+N 1600 -1000 1600 -680 { lab=vss}
+N 1580 -1000 1580 -680 { lab=vss}
+N 1560 -1000 1560 -680 { lab=vss}
+N 1540 -1000 1540 -680 { lab=vss}
+N 1520 -1000 1520 -680 { lab=vss}
+N 1500 -1000 1500 -680 { lab=vss}
+N 1480 -1000 1480 -680 { lab=vss}
+N 1700 -580 1700 -540 { lab=vmem}
+N 1360 -200 1460 -200 { lab=vss}
+N 1600 -680 1620 -680 { lab=vss}
+N 1580 -680 1600 -680 { lab=vss}
+N 1560 -680 1580 -680 { lab=vss}
+N 1540 -680 1560 -680 { lab=vss}
+N 1520 -680 1540 -680 { lab=vss}
+N 1500 -680 1520 -680 { lab=vss}
+N 1480 -680 1500 -680 { lab=vss}
+N 1460 -680 1480 -680 { lab=vss}
+N 680 -480 700 -480 { lab=resbias}
+N 740 -600 740 -530 { lab=#net8}
 N 540 -440 600 -440 { lab=refbias}
 N 600 -520 600 -440 { lab=refbias}
 N 600 -520 700 -520 { lab=refbias}
 N 680 -480 680 -440 { lab=resbias}
 N 680 -440 740 -440 { lab=resbias}
 N 740 -470 740 -440 { lab=resbias}
-N 740 -920 740 -660 { lab=vdd}
+N 740 -440 740 -370 {}
 C {devices/code_shown.sym} 40 -800 0 0 {name=ngspice 
 only_toplevel=true 
 value=" 
@@ -494,7 +521,6 @@ model=pfet_01v8
 spiceprefix=X
 }
 C {/home/cmaier/.xschem/sky130_TAC3/circuits/piezoresistor.sym} 830 -310 0 0 {name=x1}
-C {devices/isource.sym} 540 -500 0 1 {name=I1 value=1u}
 C {/home/cmaier/.xschem/sky130_TAC3/circuits/piezoresistor.sym} 450 -310 0 1 {name=x2}
 C {devices/lab_wire.sym} 630 -300 2 0 {name=l3 lab=0}
 C {devices/lab_pin.sym} 680 -320 0 0 {name=l4 lab=in}
@@ -505,5 +531,7 @@ C {devices/title.sym} 200 -80 0 0 {name=l10 author="Michele Mastella, Christoph 
 C {devices/lab_wire.sym} 920 -920 0 0 {name=l11 lab=vdd}
 C {devices/lab_wire.sym} 920 -200 0 0 {name=l12 lab=vss}
 C {devices/cccs.sym} 1700 -860 0 1 {name=F1 vnam=vmeas value=1u}
-C {devices/vcvs.sym} 740 -500 0 0 {name=E1 value=-10k}
+C {/home/cmaier/.xschem/sky130_TAC3/playground/dividerchain.sym} 1540 -1060 0 0 {name=x3}
 C {devices/ammeter.sym} 1700 -610 0 1 {name=Vineuron}
+C {devices/isource.sym} 540 -500 0 1 {name=I1 value=1u}
+C {devices/vcvs.sym} 740 -500 0 0 {name=E1 value=-10k}
