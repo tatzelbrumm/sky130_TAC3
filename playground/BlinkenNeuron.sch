@@ -106,7 +106,7 @@ value="
 .option savecurrents
 .control
 save all
-tran 100u 10
+tran 100u 2
 plot v(vdd,mem)/Vin#branch
 plot mem dn dp out slowout reset
 plot Vin#branch Vout#branch Vlatchup#branch 
@@ -132,14 +132,14 @@ C {devices/vsource.sym} 480 -780 0 1 {name=Vdd value="1.8 pwl(0 0 1m 1.8)"
 }
 C {devices/capa.sym} 640 -320 0 1 {name=C1
 m=1
-value=60u
+value=100u
 footprint=1206
 device="ceramic capacitor"}
 C {devices/ammeter.sym} 640 -780 0 0 {name=Vin}
 C {sky130_fd_pr/pfet_01v8.sym} 820 -660 0 1 {name=M3
 L=0.15
 W=10
-nf=1 mult=200
+nf=1 mult=2000
 model=pfet_01v8
 spiceprefix=X
 }
@@ -151,7 +151,7 @@ m=1}
 C {sky130_fd_pr/nfet_01v8.sym} 820 -320 0 1 {name=M2
 L=0.15
 W=10
-nf=1 mult=200
+nf=1 mult=2000
 model=nfet_01v8
 spiceprefix=X
 }
@@ -181,7 +181,7 @@ C {devices/title.sym} 160 0 0 0 {name=l1 author="Christoph Maier"}
 C {devices/lab_pin.sym} 320 -120 0 0 {name=l2 lab=0}
 C {devices/lab_pin.sym} 480 -840 0 0 {name=l3 lab=vdd}
 C {devices/res.sym} 800 -540 0 0 {name=R4
-value=5k
+value=500
 footprint=0603
 device=resistor
 m=1}
@@ -207,6 +207,6 @@ C {devices/ammeter.sym} 1020 -660 3 0 {name=Vslowout}
 C {devices/ammeter.sym} 640 -180 0 0 {name=Vcap}
 C {devices/ammeter.sym} 800 -180 0 0 {name=Vdischarge}
 C {/home/cmaier/.xschem/sky130_TAC3/circuits/piezoresistor.sym} 730 -530 0 0 {name=xR3}
-C {devices/vsource.sym} 320 -180 0 1 {name=Vpressure value="1 pwl(0 1 10 5)"
+C {devices/vsource.sym} 320 -180 0 1 {name=Vpressure value="50 pwl(0 50 2 1)"
 }
 C {devices/lab_pin.sym} 320 -540 0 0 {name=l10 lab=pressure}
