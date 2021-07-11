@@ -500,7 +500,7 @@ C {devices/lab_pin.sym} 740 -400 0 0 {name=l9 lab=resbias}
 C {devices/title.sym} 200 -80 0 0 {name=l10 author="Michele Mastella, Christoph Maier"}
 C {devices/lab_wire.sym} 920 -920 0 0 {name=l11 lab=vdd}
 C {devices/lab_wire.sym} 920 -200 0 0 {name=l12 lab=vss}
-C {/home/cmaier/.xschem/sky130_TAC3/playground/dividerchain.sym} 840 -840 0 0 {name=xdivider}
+C {../playground/dividerchain.sym} 840 -840 0 0 {name=xdivider}
 C {devices/ammeter.sym} 1700 -610 0 1 {name=Vineuron}
 C {devices/isource.sym} 540 -500 0 1 {name=I1 value=1u}
 C {devices/vcvs.sym} 740 -500 0 0 {name=E1 value=-10k}
