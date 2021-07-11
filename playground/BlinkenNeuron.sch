@@ -103,7 +103,7 @@ value="
 .option savecurrents
 .control
 save all
-tran 1m 10
+tran 100u 1
 plot mem dn dp out slowout reset
 plot Vin#branch Vout#branch Vlatchup#branch 
 +Vreset#branch Vslowout#branch Vcap#branch
@@ -124,7 +124,7 @@ m=1
 value=2u
 footprint=1206
 device="ceramic capacitor"}
-C {devices/vsource.sym} 480 -180 0 0 {name=Vdd value=1.8
+C {devices/vsource.sym} 480 -180 0 1 {name=Vdd value="pwl(0 0 10u 1.8)"
 }
 C {devices/capa.sym} 640 -320 0 1 {name=C1
 m=1
@@ -133,7 +133,7 @@ footprint=1206
 device="ceramic capacitor"}
 C {devices/ammeter.sym} 640 -470 0 0 {name=Vin}
 C {devices/res.sym} 640 -780 0 0 {name=R3
-value=60K
+value=10k
 footprint=1206
 device=resistor
 m=1}
