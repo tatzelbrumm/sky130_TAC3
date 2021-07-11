@@ -19,7 +19,7 @@ B 5 -62.5 -22.5 -57.5 -17.5 {name=iin dir=inout }
 B 5 57.5 -22.5 62.5 -17.5 {name=iout dir=inout }
 B 5 -2.5 37.5 2.5 42.5 {name=vbp dir=inout }
 B 5 57.5 17.5 62.5 22.5 {name=isink dir=inout }
-T {@symname} -49.5 -6 0 0 0.3 0.3 {}
+T {@symname} -29.5 -6 0 0 0.3 0.3 {}
 T {@name} 45 -52 0 0 0.2 0.2 {}
 T {vdd} -5 -26 2 1 0.2 0.2 {}
 T {iin} -35 -24 0 0 0.2 0.2 {}
