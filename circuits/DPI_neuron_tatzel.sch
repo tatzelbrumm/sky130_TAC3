@@ -170,34 +170,35 @@ N 1000 -200 1100 -200 { lab=vss}
 N 2340 -830 2340 -800 { lab=#net2}
 N 2140 -740 2140 -540 { lab=vmem}
 N 740 -920 1000 -920 { lab=vdd}
-N 740 -920 740 -880 { lab=vdd}
-N 540 -230 540 -200 { lab=vss}
-N 540 -760 540 -290 { lab=refbias}
 N 1800 -920 2020 -920 { lab=vdd}
 N 1360 -200 1700 -200 { lab=vss}
-N 540 -920 540 -880 { lab=vdd}
-N 570 -810 710 -810 { lab=0}
-N 680 -830 710 -830 { lab=in}
-N 570 -830 600 -830 { lab=vref}
+N 570 -300 710 -300 { lab=0}
+N 680 -320 710 -320 { lab=in}
+N 570 -320 600 -320 { lab=vref}
 N 1800 -920 1800 -440 { lab=vdd}
 N 1720 -920 1800 -920 { lab=vdd}
 N 1720 -920 1720 -440 { lab=vdd}
 N 1700 -920 1720 -920 { lab=vdd}
 N 1700 -440 1720 -440 { lab=vdd}
 N 740 -200 1000 -200 { lab=vss}
-N 540 -920 740 -920 { lab=vdd}
 N 540 -200 740 -200 { lab=vss}
-N 740 -760 740 -710 { lab=resbias}
-N 740 -230 740 -200 { lab=vss}
-N 740 -650 740 -290 { lab=#net8}
+N 740 -250 740 -200 { lab=vss}
 N 1700 -830 1700 -540 { lab=vmem}
 N 1700 -920 1700 -890 { lab=vdd}
 N 1360 -920 1700 -920 { lab=vdd}
-N 680 -240 700 -240 { lab=vss}
-N 680 -240 680 -200 { lab=vss}
-N 680 -280 700 -280 { lab=refbias}
-N 680 -320 680 -280 { lab=refbias}
-N 540 -320 680 -320 { lab=refbias}
+N 680 -840 700 -840 { lab=refbias}
+N 680 -880 700 -880 { lab=vdd}
+N 540 -250 540 -200 { lab=vss}
+N 540 -920 740 -920 { lab=vdd}
+N 680 -840 680 -800 { lab=refbias}
+N 540 -800 680 -800 { lab=refbias}
+N 540 -830 540 -800 { lab=refbias}
+N 740 -600 740 -370 { lab=resbias}
+N 740 -920 740 -890 { lab=vdd}
+N 540 -920 540 -890 { lab=vdd}
+N 740 -830 740 -660 { lab=#net8}
+N 680 -920 680 -880 { lab=vdd}
+N 540 -800 540 -370 { lab=refbias}
 C {devices/code_shown.sym} 40 -800 0 0 {name=ngspice 
 only_toplevel=true 
 value=" 
@@ -231,7 +232,7 @@ value=".lib \\\\$::SKYWATER_MODELS\\\\/models/sky130.lib.spice tt
 .param mc_pr_switch=1
 
 "}
-C {devices/ammeter.sym} 740 -680 0 1 {name=Vmeas}
+C {devices/ammeter.sym} 740 -630 0 1 {name=Vmeas}
 C {devices/ammeter.sym} 1000 -260 2 0 {name=vdd_meas}
 C {devices/vsource.sym} 1000 -860 0 0 {name=V1 value=1.2
 }
@@ -488,16 +489,16 @@ sa=0 sb=0 sd=0
 model=pfet_01v8
 spiceprefix=X
 }
-C {/home/cmaier/.xschem/sky130_TAC3/circuits/piezoresistor.sym} 830 -820 0 0 {name=x1}
-C {devices/isource.sym} 540 -260 0 1 {name=I1 value=1u}
-C {/home/cmaier/.xschem/sky130_TAC3/circuits/piezoresistor.sym} 450 -820 0 1 {name=x2}
-C {devices/lab_wire.sym} 630 -810 2 0 {name=l3 lab=0}
-C {devices/lab_pin.sym} 680 -830 0 0 {name=l4 lab=in}
-C {devices/lab_pin.sym} 600 -830 0 1 {name=l7 lab=vref}
-C {devices/lab_pin.sym} 540 -740 0 0 {name=l8 lab=refbias}
-C {devices/lab_pin.sym} 740 -740 0 0 {name=l9 lab=resbias}
+C {/home/cmaier/.xschem/sky130_TAC3/circuits/piezoresistor.sym} 830 -310 0 0 {name=x1}
+C {devices/isource.sym} 540 -860 0 1 {name=I1 value=1u}
+C {/home/cmaier/.xschem/sky130_TAC3/circuits/piezoresistor.sym} 450 -310 0 1 {name=x2}
+C {devices/lab_wire.sym} 630 -300 2 0 {name=l3 lab=0}
+C {devices/lab_pin.sym} 680 -320 0 0 {name=l4 lab=in}
+C {devices/lab_pin.sym} 600 -320 0 1 {name=l7 lab=vref}
+C {devices/lab_pin.sym} 540 -400 0 0 {name=l8 lab=refbias}
+C {devices/lab_pin.sym} 740 -400 0 0 {name=l9 lab=resbias}
 C {devices/title.sym} 200 -80 0 0 {name=l10 author="Michele Mastella, Christoph Maier"}
 C {devices/lab_wire.sym} 1540 -920 0 0 {name=l11 lab=vdd}
 C {devices/lab_wire.sym} 1540 -200 0 0 {name=l12 lab=vss}
 C {devices/cccs.sym} 1700 -860 0 1 {name=F1 vnam=vmeas value=1u}
-C {devices/vcvs.sym} 740 -260 0 0 {name=E1 value=1}
+C {devices/vcvs.sym} 740 -860 0 0 {name=E1 value=1}
