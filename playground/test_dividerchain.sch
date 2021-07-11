@@ -76,7 +76,7 @@ value="
 save all
 op
 write test_dividerchain.op.raw
-dc Iref 100n 1u 10n
+dc Iref 10u 100u 1u
 write test_dividerchain.raw
 plot v.xdut.viin#branch/v.xdut.vi0#branch
 plot v.xdut.vi0#branch/v.xdut.vi1#branch
