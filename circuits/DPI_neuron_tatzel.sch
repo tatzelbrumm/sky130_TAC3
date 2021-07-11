@@ -132,7 +132,7 @@ N 2140 -260 2160 -260 { lab=#net4}
 N 2140 -380 2140 -260 { lab=#net4}
 N 2140 -380 2200 -380 { lab=#net4}
 N 1120 -920 1240 -920 { lab=vdd}
-N 1240 -920 1360 -920 { lab=vdd}
+N 1300 -920 1360 -920 { lab=vdd}
 N 2020 -920 2040 -920 { lab=vdd}
 N 2040 -920 2200 -920 { lab=vdd}
 N 2220 -920 2340 -920 { lab=vdd}
@@ -169,9 +169,8 @@ N 1000 -230 1000 -200 { lab=vss}
 N 1000 -200 1100 -200 { lab=vss}
 N 2340 -830 2340 -800 { lab=#net2}
 N 2140 -740 2140 -540 { lab=vmem}
-N 740 -920 1000 -920 { lab=vdd}
 N 1800 -920 2020 -920 { lab=vdd}
-N 1360 -200 1700 -200 { lab=vss}
+N 1460 -200 1700 -200 { lab=vss}
 N 570 -300 710 -300 { lab=0}
 N 680 -320 710 -320 { lab=in}
 N 570 -320 600 -320 { lab=vref}
@@ -188,20 +187,48 @@ N 1360 -920 1700 -920 { lab=vdd}
 N 680 -480 700 -480 { lab=refbias}
 N 680 -520 700 -520 { lab=vdd}
 N 540 -250 540 -200 { lab=vss}
-N 540 -920 740 -920 { lab=vdd}
+N 540 -920 1000 -920 { lab=vdd}
 N 680 -480 680 -440 { lab=refbias}
 N 540 -440 680 -440 { lab=refbias}
 N 540 -470 540 -440 { lab=refbias}
-N 740 -920 740 -890 { lab=vdd}
-N 740 -830 740 -530 { lab=#net8}
 N 740 -470 740 -360 { lab=resbias}
 N 540 -440 540 -370 { lab=refbias}
-N 540 -920 540 -530 { lab=vdd}
+N 540 -560 540 -530 { lab=vdd}
 N 680 -560 680 -520 { lab=vdd}
 N 540 -560 680 -560 { lab=vdd}
-N 1700 -830 1700 -720 { lab=#net9}
-N 1700 -660 1700 -540 { lab=vmem}
-C {devices/code_shown.sym} 0 -890 0 0 {name=ngspice 
+N 1540 -1140 1540 -1100 { lab=vdd}
+N 1300 -1140 1540 -1140 { lab=vdd}
+N 1300 -1140 1300 -920 { lab=vdd}
+N 740 -600 740 -530 { lab=#net8}
+N 740 -960 1440 -960 { lab=#net9}
+N 1440 -1000 1440 -960 { lab=#net9}
+N 540 -920 540 -560 { lab=vdd}
+N 1240 -920 1300 -920 { lab=vdd}
+N 740 -960 740 -660 { lab=#net9}
+N 1700 -830 1700 -640 { lab=#net10}
+N 1640 -1000 1640 -680 { lab=vss}
+N 1620 -680 1640 -680 { lab=vss}
+N 1460 -1000 1460 -680 { lab=vss}
+N 1460 -680 1460 -200 { lab=vss}
+N 1620 -1000 1620 -680 { lab=vss}
+N 1600 -1000 1600 -680 { lab=vss}
+N 1580 -1000 1580 -680 { lab=vss}
+N 1560 -1000 1560 -680 { lab=vss}
+N 1540 -1000 1540 -680 { lab=vss}
+N 1520 -1000 1520 -680 { lab=vss}
+N 1500 -1000 1500 -680 { lab=vss}
+N 1480 -1000 1480 -680 { lab=vss}
+N 1700 -580 1700 -540 {}
+N 1360 -200 1460 -200 { lab=vss}
+N 1600 -680 1620 -680 { lab=vss}
+N 1580 -680 1600 -680 { lab=vss}
+N 1560 -680 1580 -680 { lab=vss}
+N 1540 -680 1560 -680 { lab=vss}
+N 1520 -680 1540 -680 { lab=vss}
+N 1500 -680 1520 -680 { lab=vss}
+N 1480 -680 1500 -680 { lab=vss}
+N 1460 -680 1480 -680 { lab=vss}
+C {devices/code_shown.sym} 40 -800 0 0 {name=ngspice 
 only_toplevel=true 
 value=" 
 .options gmin=1e-15 abstol=10f
@@ -220,14 +247,14 @@ wrdata spikes_DPI.csv all.vmem
 wrdata pressure_DPI.csv all.Input
 *plot -all.Vres/all.Vres#branch 
 plot v(in)
-plot all.Vmeas#branch
-plot all.Vineuron#branch
+plot Vmeas#branch
+plot Vineuron#branch
 plot Vmeas#branch/Vineuron#branch
 plot vmem Vna Vk
 *plot all.vdd_meas#branch*all.vdd
 .endc
 "}
-C {devices/code.sym} 110 -350 0 0 {name=TT_MODELS
+C {devices/code.sym} 150 -260 0 0 {name=TT_MODELS
 only_toplevel=true
 format="tcleval( @value )"
 value=".lib \\\\$::SKYWATER_MODELS\\\\/models/sky130.lib.spice tt
@@ -236,7 +263,7 @@ value=".lib \\\\$::SKYWATER_MODELS\\\\/models/sky130.lib.spice tt
 .param mc_pr_switch=1
 
 "}
-C {devices/ammeter.sym} 740 -860 0 1 {name=Vmeas}
+C {devices/ammeter.sym} 740 -630 0 1 {name=Vmeas}
 C {devices/ammeter.sym} 1000 -260 2 0 {name=vdd_meas}
 C {devices/vsource.sym} 1000 -860 0 0 {name=V1 value=1.2
 }
@@ -502,8 +529,9 @@ C {devices/lab_pin.sym} 600 -320 0 1 {name=l7 lab=vref}
 C {devices/lab_pin.sym} 540 -400 0 0 {name=l8 lab=refbias}
 C {devices/lab_pin.sym} 740 -400 0 0 {name=l9 lab=resbias}
 C {devices/title.sym} 200 -80 0 0 {name=l10 author="Michele Mastella, Christoph Maier"}
-C {devices/lab_wire.sym} 1540 -920 0 0 {name=l11 lab=vdd}
-C {devices/lab_wire.sym} 1540 -200 0 0 {name=l12 lab=vss}
+C {devices/lab_wire.sym} 920 -920 0 0 {name=l11 lab=vdd}
+C {devices/lab_wire.sym} 920 -200 0 0 {name=l12 lab=vss}
 C {devices/cccs.sym} 1700 -860 0 1 {name=F1 vnam=vmeas value=1u}
 C {devices/vcvs.sym} 740 -500 0 0 {name=E1 value=1}
-C {devices/ammeter.sym} 1700 -690 0 1 {name=Vineuron}
+C {/home/cmaier/.xschem/sky130_TAC3/playground/dividerchain.sym} 1540 -1060 0 0 {name=x3}
+C {devices/ammeter.sym} 1700 -610 0 1 {name=Vineuron}
