@@ -23,7 +23,6 @@ E {}
 T {https://cmucsd.bitbucket.io/bionicblinkenlights/index.html} 550 -80 0 0 0.4 0.4 {}
 N 800 -420 920 -420 { lab=mem}
 N 800 -420 800 -350 { lab=mem}
-N 720 -420 800 -420 { lab=mem}
 N 640 -420 640 -350 { lab=mem}
 N 960 -1020 960 -970 { lab=#net1}
 N 1120 -1020 1120 -970 { lab=#net2}
@@ -49,7 +48,6 @@ N 780 -120 800 -120 { lab=0}
 N 960 -420 980 -420 { lab=0}
 N 980 -420 980 -120 { lab=0}
 N 960 -120 980 -120 { lab=0}
-N 720 -120 780 -120 { lab=0}
 N 1280 -150 1280 -120 { lab=0}
 N 980 -120 1280 -120 { lab=0}
 N 1280 -320 1280 -210 { lab=reset}
@@ -68,42 +66,48 @@ N 780 -660 800 -660 { lab=vdd}
 N 780 -840 780 -660 { lab=vdd}
 N 780 -840 800 -840 { lab=vdd}
 N 640 -840 640 -810 { lab=vdd}
-N 640 -420 720 -420 { lab=mem}
-N 640 -750 640 -570 { lab=#net12}
-N 320 -1020 320 -970 { lab=#net13}
-N 480 -1020 480 -970 { lab=#net14}
-N 0 -1020 0 -970 { lab=#net15}
-N 160 -1020 160 -970 { lab=#net16}
-N 1440 -660 1520 -660 { lab=#net17}
-N 1440 -900 1520 -900 { lab=#net18}
-N 480 -150 480 -120 { lab=0}
-N 480 -120 720 -120 { lab=0}
-N 480 -840 480 -210 { lab=vdd}
+N 640 -420 800 -420 { lab=mem}
+N 320 -1020 320 -970 { lab=#net12}
+N 480 -1020 480 -970 { lab=#net13}
+N 0 -1020 0 -970 { lab=#net14}
+N 160 -1020 160 -970 { lab=#net15}
+N 1440 -660 1520 -660 { lab=#net16}
+N 1440 -900 1520 -900 { lab=#net17}
+N 640 -120 780 -120 { lab=0}
 N 640 -840 780 -840 { lab=vdd}
 N 1140 -660 1180 -660 { lab=slowout}
 N 480 -840 640 -840 { lab=vdd}
 N 800 -630 800 -570 { lab=dp}
-N 640 -440 640 -420 { lab=mem}
-N 640 -570 640 -500 { lab=#net12}
-N 800 -510 800 -500 { lab=#net19}
+N 800 -510 800 -500 { lab=#net18}
 N 800 -440 800 -420 { lab=mem}
-N 960 -580 960 -570 { lab=#net20}
+N 960 -580 960 -570 { lab=#net19}
 N 960 -660 960 -640 { lab=out}
 N 1280 -440 1280 -320 { lab=reset}
-N 1280 -630 1280 -500 { lab=#net21}
+N 1280 -630 1280 -500 { lab=#net20}
 N 960 -660 990 -660 { lab=out}
-N 1050 -660 1080 -660 { lab=#net22}
-N 640 -290 640 -210 { lab=#net23}
+N 1050 -660 1080 -660 { lab=#net21}
+N 640 -290 640 -210 { lab=#net22}
 N 640 -150 640 -120 { lab=0}
 N 800 -150 800 -120 { lab=0}
-N 800 -290 800 -210 { lab=#net24}
+N 800 -290 800 -210 { lab=#net23}
+N 480 -840 480 -810 { lab=vdd}
+N 480 -750 480 -120 { lab=0}
+N 480 -120 640 -120 { lab=0}
+N 640 -470 640 -420 { lab=mem}
+N 640 -750 640 -590 { lab=#net24}
+N 480 -520 610 -520 { lab=0}
+N 320 -540 610 -540 { lab=pressure}
+N 320 -540 320 -210 { lab=pressure}
+N 320 -150 320 -120 { lab=0}
+N 320 -120 480 -120 { lab=0}
 C {devices/code_shown.sym} 0 -890 0 0 {name=ngspice 
 only_toplevel=true 
 value=" 
 .option savecurrents
 .control
 save all
-tran 100u 2
+tran 100u 10
+plot v(vdd,mem)/Vin#branch
 plot mem dn dp out slowout reset
 plot Vin#branch Vout#branch Vlatchup#branch 
 +Vreset#branch Vslowout#branch Vcap#branch
@@ -121,22 +125,17 @@ spiceprefix=X
 }
 C {devices/capa.sym} 1180 -780 0 0 {name=C2
 m=1
-value=1u
+value=2u
 footprint=1206
 device="ceramic capacitor"}
-C {devices/vsource.sym} 480 -180 0 1 {name=Vdd value="pwl(0 0 10u 1.8)"
+C {devices/vsource.sym} 480 -780 0 1 {name=Vdd value="1.8 pwl(0 0 1m 1.8)"
 }
 C {devices/capa.sym} 640 -320 0 1 {name=C1
 m=1
-value=20u
+value=60u
 footprint=1206
 device="ceramic capacitor"}
-C {devices/ammeter.sym} 640 -470 0 0 {name=Vin}
-C {devices/res.sym} 640 -780 0 0 {name=R3
-value=10k
-footprint=1206
-device=resistor
-m=1}
+C {devices/ammeter.sym} 640 -780 0 0 {name=Vin}
 C {sky130_fd_pr/pfet_01v8.sym} 820 -660 0 1 {name=M3
 L=0.15
 W=10
@@ -179,7 +178,7 @@ model=pfet_01v8
 spiceprefix=X
 }
 C {devices/title.sym} 160 0 0 0 {name=l1 author="Christoph Maier"}
-C {devices/lab_pin.sym} 480 -120 0 0 {name=l2 lab=0}
+C {devices/lab_pin.sym} 320 -120 0 0 {name=l2 lab=0}
 C {devices/lab_pin.sym} 480 -840 0 0 {name=l3 lab=vdd}
 C {devices/res.sym} 800 -540 0 0 {name=R4
 value=5k
@@ -207,3 +206,7 @@ C {devices/ammeter.sym} 1280 -470 0 0 {name=Vreset}
 C {devices/ammeter.sym} 1020 -660 3 0 {name=Vslowout}
 C {devices/ammeter.sym} 640 -180 0 0 {name=Vcap}
 C {devices/ammeter.sym} 800 -180 0 0 {name=Vdischarge}
+C {/home/cmaier/.xschem/sky130_TAC3/circuits/piezoresistor.sym} 730 -530 0 0 {name=xR3}
+C {devices/vsource.sym} 320 -180 0 1 {name=Vpressure value="1 pwl(0 1 10 5)"
+}
+C {devices/lab_pin.sym} 320 -540 0 0 {name=l10 lab=pressure}
