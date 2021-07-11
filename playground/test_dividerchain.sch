@@ -78,16 +78,15 @@ op
 write test_dividerchain.op.raw
 dc Iref 100n 1u 10n
 write test_dividerchain.raw
-plot v.xdut.viin#branch
-plot v.xdut.vi0#branch
-plot v.xdut.vi1#branch
-plot v.xdut.vi2#branch
-plot v.xdut.vi3#branch
-plot v.xdut.vi4#branch
-plot v.xdut.vi5#branch
-plot v.xdut.vi6#branch
-plot v.xdut.vi7#branch
-plot v.xdut.vi8#branch
-plot v.xdut.vi9#branch
+plot v.xdut.viin#branch/v.xdut.vi0#branch
+plot v.xdut.vi0#branch/v.xdut.vi1#branch
+plot v.xdut.vi1#branch/v.xdut.vi2#branch
+plot v.xdut.vi2#branch/v.xdut.vi3#branch
+plot v.xdut.vi3#branch/v.xdut.vi4#branch
+plot v.xdut.vi4#branch/v.xdut.vi5#branch
+plot v.xdut.vi5#branch/v.xdut.vi6#branch
+plot v.xdut.vi6#branch/v.xdut.vi7#branch
+plot v.xdut.vi7#branch/v.xdut.vi8#branch
+plot v.xdut.vi8#branch/v.xdut.vi9#branch
 .endc
 "}
