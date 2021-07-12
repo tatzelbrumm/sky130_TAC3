@@ -121,14 +121,15 @@ value="
 vvss vss 0 0
 .control
 save all
-tran 100n 5m
+tran 10n 5m
+write Axon_hillock.raw
 plot mem out sens gcasc mir inv
 *plot "Input"
 plot vsens#branch
 plot vin#branch
 op
-write AXON_hillock.raw
-wrdata spikes_AH.csv all.vout
+write Axon_hillock_op.raw
+wrdata spikes_AH.csv out
 
 .endc
 "}
