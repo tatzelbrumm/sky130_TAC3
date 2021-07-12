@@ -89,19 +89,19 @@ N 1280 -230 1280 -200 { lab=vss}
 N 1280 -360 1280 -290 { lab=vgain}
 N 1320 -260 1340 -260 { lab=vgain}
 N 1340 -360 1340 -260 { lab=vgain}
-N 1820 -380 1820 -280 { lab=vmem}
+N 1820 -380 1820 -280 { lab=vmir}
 N 1940 -540 2040 -540 { lab=vmem}
 N 1280 -360 1340 -360 { lab=vgain}
 N 2040 -590 2040 -540 { lab=vmem}
 N 1280 -830 1280 -360 { lab=vgain}
-N 1860 -440 1880 -440 { lab=vmem}
+N 1860 -440 1880 -440 { lab=vmir}
 N 1700 -410 1700 -200 { lab=vss}
 N 1640 -440 1660 -440 { lab=vgain}
 N 1640 -440 1640 -360 { lab=vgain}
 N 1340 -360 1640 -360 { lab=vgain}
 N 1800 -440 1820 -440 { lab=vdd}
-N 1700 -540 1820 -540 { lab=vmir}
-N 1700 -540 1700 -470 { lab=vmir}
+N 1700 -500 1820 -500 { lab=vmir}
+N 1700 -500 1700 -470 { lab=vmir}
 N 2440 -500 2440 -470 { lab=Vk}
 N 2340 -500 2440 -500 { lab=Vk}
 N 2440 -410 2440 -200 { lab=vss}
@@ -129,7 +129,6 @@ N 1500 -200 1520 -200 { lab=vss}
 N 1380 -200 1400 -200 { lab=vss}
 N 1260 -200 1280 -200 { lab=vss}
 N 1840 -200 1940 -200 { lab=vss}
-N 1880 -540 1940 -540 { lab=vmem}
 N 2200 -410 2200 -380 { lab=#net4}
 N 2200 -440 2220 -440 { lab=vss}
 N 2220 -440 2220 -260 { lab=vss}
@@ -163,7 +162,6 @@ N 540 -440 540 -370 { lab=refbias}
 N 840 -920 840 -880 { lab=vdd}
 N 540 -920 540 -530 { lab=vdd}
 N 1400 -920 1520 -920 { lab=vdd}
-N 1700 -580 1700 -540 { lab=vmir}
 N 1520 -200 1700 -200 { lab=vss}
 N 680 -480 700 -480 { lab=resbias}
 N 540 -440 600 -440 { lab=refbias}
@@ -181,8 +179,7 @@ N 840 -920 1160 -920 { lab=vdd}
 N 740 -780 740 -640 { lab=divin}
 N 540 -920 840 -920 { lab=vdd}
 N 740 -580 740 -530 { lab=#net7}
-N 1700 -680 1700 -640 { lab=divout}
-N 860 -680 1700 -680 { lab=divout}
+N 1940 -680 1940 -640 { lab=divout}
 N 840 -780 840 -680 { lab=divout}
 N 760 -780 760 -740 { lab=vss}
 N 920 -740 940 -740 { lab=vss}
@@ -194,20 +191,24 @@ N 880 -780 880 -740 { lab=vss}
 N 900 -780 900 -740 { lab=vss}
 N 920 -780 920 -740 { lab=vss}
 N 940 -780 940 -740 { lab=vss}
-N 1820 -540 1820 -470 { lab=vmir}
-N 1880 -440 1880 -380 { lab=vmem}
-N 1820 -380 1880 -380 { lab=vmem}
+N 1820 -500 1820 -470 { lab=vmir}
+N 1880 -440 1880 -380 { lab=vmir}
+N 1820 -380 1880 -380 { lab=vmir}
 N 740 -200 940 -200 { lab=vss}
 N 760 -740 780 -740 { lab=vss}
 N 780 -740 800 -740 { lab=vss}
 N 800 -740 820 -740 { lab=vss}
 N 880 -740 900 -740 { lab=vss}
 N 900 -740 920 -740 { lab=vss}
-N 1820 -410 1820 -380 { lab=vmem}
-N 1880 -540 1880 -440 { lab=vmem}
+N 1820 -410 1820 -380 { lab=vmir}
+N 1880 -500 1880 -440 { lab=vmir}
 N 860 -780 860 -740 { lab=vss}
-N 840 -680 860 -680 { lab=divout}
-N 820 -740 880 -740 { lab=vss}
+N 840 -680 1700 -680 { lab=divout}
+N 860 -740 880 -740 { lab=vss}
+N 820 -740 860 -740 { lab=vss}
+N 1820 -500 1880 -500 { lab=vmir}
+N 1700 -680 1940 -680 { lab=divout}
+N 1940 -580 1940 -540 { lab=vmem}
 C {devices/code_shown.sym} 40 -800 0 0 {name=ngspice 
 only_toplevel=true 
 value=" 
@@ -307,7 +308,7 @@ spiceprefix=X
 }
 C {devices/lab_pin.sym} 2200 -620 0 1 {name=l2 lab=Vna}
 C {devices/lab_pin.sym} 2100 -500 0 0 {name=l6 lab=Vk}
-C {devices/lab_pin.sym} 1700 -540 0 0 {name=l18 lab=vmir}
+C {devices/lab_pin.sym} 1700 -500 0 0 {name=l18 lab=vmir}
 C {sky130_fd_pr/nfet_01v8.sym} 2320 -260 0 0 {name=M4
 L=2
 W=2
@@ -511,7 +512,7 @@ C {devices/title.sym} 200 -80 0 0 {name=l10 author="Michele Mastella, Christoph 
 C {devices/lab_wire.sym} 920 -920 0 0 {name=l11 lab=vdd}
 C {devices/lab_wire.sym} 920 -200 0 0 {name=l12 lab=vss}
 C {../playground/dividerchain.sym} 840 -840 0 0 {name=xdivider}
-C {devices/ammeter.sym} 1700 -610 0 1 {name=Vineuron}
+C {devices/ammeter.sym} 1940 -610 0 1 {name=Vineuron}
 C {devices/isource.sym} 540 -500 0 1 {name=I1 value=300n}
 C {devices/vcvs.sym} 740 -500 0 0 {name=E1 value=-10k}
 C {devices/lab_pin.sym} 740 -710 0 0 {name=l1 lab=divin}
