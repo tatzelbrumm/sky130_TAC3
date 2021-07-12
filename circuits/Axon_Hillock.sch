@@ -90,7 +90,6 @@ N 700 -80 840 -80 { lab=vss}
 N 680 -380 680 -350 { lab=mir}
 N 520 -320 640 -320 { lab=gcasc}
 N 680 -290 680 -260 { lab=sens}
-N 560 -260 680 -260 { lab=sens}
 N 680 -320 700 -320 { lab=vss}
 N 700 -320 700 -80 { lab=vss}
 N 500 -260 520 -260 { lab=vss}
@@ -104,19 +103,25 @@ N 720 -440 740 -440 { lab=mir}
 N 520 -410 520 -320 { lab=gcasc}
 N 680 -80 700 -80 { lab=vss}
 N 520 -80 680 -80 { lab=vss}
-N 680 -260 680 -240 { lab=sens}
-N 680 -180 680 -160 { lab=#net1}
-N 680 -100 680 -80 { lab=vss}
-N 840 -410 840 -380 { lab=#net2}
+N 840 -410 840 -380 { lab=#net1}
 N 840 -320 840 -280 { lab=mem}
+N 560 -260 600 -260 { lab=#net2}
+N 660 -260 680 -260 { lab=sens}
+N 520 -160 550 -160 { lab=vss}
+N 460 -100 460 -80 { lab=vss}
+N 580 -260 580 -230 { lab=#net2}
+N 580 -110 580 -80 { lab=vss}
+N 460 -180 550 -180 { lab=pressure}
+N 460 -180 460 -160 { lab=pressure}
 C {devices/code_shown.sym} 0 -670 0 0 {name=ngspice 
 only_toplevel=true 
-value=" 
+value="
+.options gmin=1e-15 abstol=1p
 .option savecurrents
 vvss vss 0 0
 .control
 save all
-tran 10n 1m
+tran 100n 5m
 plot mem out sens gcasc mir inv
 *plot "Input"
 plot vsens#branch
@@ -183,23 +188,18 @@ m=1
 value=5p
 footprint=1206
 device="ceramic capacitor"}
-C {devices/ammeter.sym} 680 -210 0 1 {name=Vsens}
-C {devices/res.sym} 680 -130 0 0 {name=R1
-value=60K
-footprint=1206
-device=resistor
-m=1}
+C {devices/ammeter.sym} 630 -260 1 1 {name=Vsens}
 C {sky130_fd_pr/pfet_01v8.sym} 820 -440 0 0 {name=M5
-L=2
+L=0.4
 W=2
 nf=1 mult=1
 model=pfet_01v8
 spiceprefix=X
 }
 C {sky130_fd_pr/pfet_01v8.sym} 700 -440 0 1 {name=M6
-L=2
-W=2
-nf=1 mult=16
+L=0.4
+W=96
+nf=1 mult=640
 model=pfet_01v8
 spiceprefix=X
 }
@@ -214,7 +214,7 @@ spiceprefix=X
 C {sky130_fd_pr/nfet_01v8.sym} 660 -320 0 0 {name=M7
 L=0.15
 W=20  
-nf=1 mult=1
+nf=1 mult=20
 model=nfet_01v8
 spiceprefix=X
 }
@@ -229,3 +229,6 @@ C {devices/ammeter.sym} 840 -350 0 1 {name=Vin}
 C {devices/lab_pin.sym} 680 -380 0 0 {name=l3 lab=mir}
 C {devices/lab_pin.sym} 1180 -240 0 1 {name=l4 lab=inv}
 C {devices/title.sym} 160 0 0 0 {name=l5 author="Sahil?, Christoph Maier"}
+C {/home/cmaier/.xschem/sky130_TAC3/circuits/piezoresistor.sym} 670 -170 0 0 {name=x1}
+C {devices/vsource.sym} 460 -130 0 1 {name=Vpressure value="50 pwl(0 1 2m 140 4m 1)"}
+C {devices/lab_pin.sym} 460 -180 0 0 {name=l6 lab=pressure}
