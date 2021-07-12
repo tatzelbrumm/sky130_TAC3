@@ -512,7 +512,7 @@ C {devices/lab_wire.sym} 920 -920 0 0 {name=l11 lab=vdd}
 C {devices/lab_wire.sym} 920 -200 0 0 {name=l12 lab=vss}
 C {../playground/dividerchain.sym} 840 -840 0 0 {name=xdivider}
 C {devices/ammeter.sym} 1700 -610 0 1 {name=Vineuron}
-C {devices/isource.sym} 540 -500 0 1 {name=I1 value=100n}
+C {devices/isource.sym} 540 -500 0 1 {name=I1 value=300n}
 C {devices/vcvs.sym} 740 -500 0 0 {name=E1 value=-10k}
 C {devices/lab_pin.sym} 740 -710 0 0 {name=l1 lab=divin}
 C {devices/lab_pin.sym} 840 -710 0 0 {name=l5 lab=divout}
