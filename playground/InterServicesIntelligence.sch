@@ -41,9 +41,9 @@ N 200 -360 260 -360 { lab=gnd}
 N 410 -360 520 -360 { lab=gnd}
 N 330 -390 330 -360 { lab=gnd}
 N 330 -480 330 -450 { lab=#net2}
-N 330 -570 330 -540 { lab=dspikedt}
-N 260 -570 330 -570 { lab=dspikedt}
-N 260 -570 260 -450 { lab=dspikedt}
+N 330 -570 330 -540 { lab=spikebuf}
+N 260 -570 330 -570 { lab=spikebuf}
+N 260 -570 260 -450 { lab=spikebuf}
 N 260 -360 330 -360 { lab=gnd}
 N 410 -470 480 -470 { lab=dspikedt}
 N 410 -390 410 -360 { lab=gnd}
@@ -65,10 +65,10 @@ C {devices/ipin.sym} 180 -440 0 0 {name=p2 lab=spike}
 C {devices/opin.sym} 1070 -560 0 0 {name=p3 lab=isi}
 C {devices/lab_pin.sym} 700 -510 0 0 {name=l1 lab=sample}
 C {devices/lab_pin.sym} 890 -510 0 0 {name=l3 lab=voff}
-C {devices/vcvs.sym} 260 -420 0 0 {name=Ebuffer value=1m}
+C {devices/vcvs.sym} 260 -420 0 0 {name=Ebuffer value=1}
 C {devices/capa.sym} 330 -420 0 0 {name=Cdiff
 m=1
-value=1p}
+value=1u}
 C {devices/ammeter.sym} 330 -510 0 1 {name=Vmeas}
 C {devices/ccvs.sym} 410 -420 0 0 {name=Hdiff vnam=vmeas value=1}
 C {devices/lab_pin.sym} 410 -470 0 0 {name=l5 lab=dspikedt}

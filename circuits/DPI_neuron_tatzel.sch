@@ -205,8 +205,8 @@ N 2670 -500 2700 -500 { lab=isi}
 C {devices/code_shown.sym} 40 -800 0 0 {name=ngspice 
 only_toplevel=true 
 value="
-.model switch1 sw vt=0 vh=1m ron=1 roff=1G
-.options gmin=1e-15 abstol=10f
+.model switch1 sw vt=0 vh=1m ron=1m roff=1G
+.options gmin=1e-15
 .option savecurrents
 vvss vss 0 0
 vpref vref 0 60
@@ -216,7 +216,7 @@ save all
 op
 write DPI_neuron_tatzel.op.raw
 *dc vpressure 0.01 120 0.1
-tran  100n 200m
+tran  100n 50m
 write DPI_neuron_tatzel.raw
 wrdata spikes_DPI.csv all.vmem
 wrdata pressure_DPI.csv all.Input
