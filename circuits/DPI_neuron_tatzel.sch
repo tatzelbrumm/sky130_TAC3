@@ -198,25 +198,31 @@ N 880 -780 880 -740 { lab=vss}
 N 900 -780 900 -740 { lab=vss}
 N 920 -780 920 -740 { lab=vss}
 N 940 -780 940 -740 { lab=vss}
+N 2610 -450 2610 -200 { lab=vss}
+N 2440 -200 2610 -200 { lab=vss}
+N 2440 -500 2550 -500 { lab=Vk}
+N 2670 -500 2700 -500 { lab=isi}
 C {devices/code_shown.sym} 40 -800 0 0 {name=ngspice 
 only_toplevel=true 
-value=" 
+value="
+.model switch1 sw vt=0 vh=1m ron=1 roff=1G
 .options gmin=1e-15 abstol=10f
 .option savecurrents
 vvss vss 0 0
 vpref vref 0 60
-Vin in vref dc 0 ac 0.25 sin(0 55 1)
+Vin in vref dc 0 ac 0.25 sin(0 20 1)
 .control
 save all
 op
 write DPI_neuron_tatzel.op.raw
 *dc vpressure 0.01 120 0.1
-tran  10u 2
+tran  100n 200m
 write DPI_neuron_tatzel.raw
 wrdata spikes_DPI.csv all.vmem
 wrdata pressure_DPI.csv all.Input
 *plot -all.Vres/all.Vres#branch 
-plot v(in)
+plot in
+plot isi
 plot Vmeas#branch
 plot Vineuron#branch
 plot Vmeas#branch/Vineuron#branch
@@ -506,3 +512,5 @@ C {devices/isource.sym} 540 -500 0 1 {name=I1 value=1u}
 C {devices/vcvs.sym} 740 -500 0 0 {name=E1 value=-10k}
 C {devices/lab_pin.sym} 740 -710 0 0 {name=l1 lab=divin}
 C {devices/lab_pin.sym} 840 -710 0 0 {name=l5 lab=divout}
+C {/home/cmaier/.xschem/sky130_TAC3/playground/InterServicesIntelligence.sym} 2610 -490 0 0 {name=xisi}
+C {devices/lab_pin.sym} 2700 -500 0 1 {name=l13 lab=isi}

@@ -44,17 +44,17 @@ N 980 -560 1070 -560 { lab=isi}
 C {devices/capa.sym} 700 -410 0 0 {name=Csample
 m=1
 value=100f}
-C {devices/isource.sym} 700 -610 0 1 {name=Itiming value=1u}
+C {devices/isource.sym} 700 -610 0 1 {name=Itiming value=1n}
 C {devices/switch_ngspice.sym} 790 -560 3 0 {name=Son model=SWITCH1}
 C {devices/switch_ngspice.sym} 590 -520 0 0 {name=Sreset model=SWITCH1}
 C {devices/capa.sym} 980 -410 0 0 {name=Cintegrate
 m=1
 value=1p}
-C {devices/vsource.sym} 810 -410 0 0 {name=V1 value=1.2}
-C {devices/vsource.sym} 520 -410 0 0 {name=Vreset value=1.6}
+C {devices/vsource.sym} 810 -410 0 0 {name=V1 value=100m}
+C {devices/vsource.sym} 520 -410 0 0 {name=Vreset value=200m}
 C {devices/iopin.sym} 450 -360 0 1 {name=p1 lab=gnd}
 C {devices/switch_ngspice.sym} 890 -560 3 0 {name=Soff model=SWITCH1}
-C {devices/vsource.sym} 890 -410 0 0 {name=V2 value=1.4}
+C {devices/vsource.sym} 890 -410 0 0 {name=V2 value=120m}
 C {devices/ipin.sym} 450 -470 0 0 {name=p2 lab=spike}
 C {devices/opin.sym} 1070 -560 0 0 {name=p3 lab=isi}
 C {devices/lab_pin.sym} 700 -510 0 0 {name=l1 lab=sample}
