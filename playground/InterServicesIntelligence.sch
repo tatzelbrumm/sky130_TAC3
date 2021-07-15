@@ -132,7 +132,7 @@ C {devices/lab_pin.sym} 1280 -220 1 0 {name=l8 lab=out3}
 C {devices/capa.sym} 380 -450 0 0 {name=Csample
 m=1
 value=10n}
-C {devices/isource.sym} 380 -690 0 1 {name=Itiming value="pwl(0 0 1u 10u)"}
+C {devices/isource.sym} 380 -690 0 1 {name=Itiming value="dc 0 pwl(0 0 1u 10u)"}
 C {devices/lab_pin.sym} 380 -550 0 0 {name=l9 lab=sample}
 C {devices/capa.sym} 1060 -450 0 0 {name=Cintegrate
 m=1
