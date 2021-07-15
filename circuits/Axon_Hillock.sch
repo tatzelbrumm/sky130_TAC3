@@ -242,8 +242,8 @@ spiceprefix=X
 C {devices/ammeter.sym} 840 -350 0 1 {name=Vin}
 C {devices/lab_pin.sym} 680 -380 0 0 {name=l3 lab=mir}
 C {devices/lab_pin.sym} 1180 -240 0 1 {name=l4 lab=inv}
-C {devices/title.sym} 160 0 0 0 {name=l5 author="Sahil?, Christoph Maier"}
-C {/home/cmaier/.xschem/sky130_TAC3/circuits/piezoresistor.sym} 670 -170 0 0 {name=x1}
+C {devices/title.sym} 160 0 0 0 {name=l5 author="Sahil Shah, Christoph Maier"}
+C {../circuits/piezoresistor.sym} 670 -170 0 0 {name=x1}
 C {devices/vsource.sym} 460 -130 0 1 {name=Vpressure value="50 pwl(0 1 2m 140 4m 1)"}
 C {devices/lab_pin.sym} 460 -180 0 0 {name=l6 lab=pressure}
 C {../playground/InterServicesIntelligence.sym} 1420 -300 0 0 {name=xisi}
