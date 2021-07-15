@@ -164,7 +164,7 @@ C {devices/isource.sym} 380 -690 0 1 {name=Itiming value="pwl(0 0 1u 10u)"}
 C {devices/lab_pin.sym} 380 -550 0 0 {name=l9 lab=sample}
 C {devices/capa.sym} 1060 -450 0 0 {name=Cintegrate
 m=1
-value=100n}
+value=10n}
 C {devices/opin.sym} 1260 -640 0 0 {name=p3 lab=isi}
 C {devices/switch_ngspice.sym} 660 -460 0 1 {name=Sreset1 model=SWITCH1}
 C {devices/vcvs.sym} 1780 -220 0 0 {name=Eswref value=0.5}
