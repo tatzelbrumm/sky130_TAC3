@@ -120,8 +120,8 @@ N 980 -320 1100 -320 { lab=vdd}
 C {devices/code_shown.sym} 0 -800 0 0 {name=ngspice 
 only_toplevel=true 
 value="
-.model switch1 sw vt=1.2 vh=1m ron=0.001 roff=1e15
-.options gmin=1e-15 abstol=1p
+.model switch1 sw vt=1.2 vh=0 ron=1 roff=1e9
+.options gmin=1e-15 abstol=1p trtol=1 chgtol=1e-16
 .option savecurrents
 .control
 save all
@@ -160,11 +160,11 @@ C {devices/lab_pin.sym} 1280 -220 1 0 {name=l8 lab=out3}
 C {devices/capa.sym} 380 -450 0 0 {name=Csample
 m=1
 value=10n}
-C {devices/isource.sym} 380 -690 0 1 {name=Itiming value=1u}
+C {devices/isource.sym} 380 -690 0 1 {name=Itiming value="pwl(0 0 1u 10u)"}
 C {devices/lab_pin.sym} 380 -550 0 0 {name=l9 lab=sample}
 C {devices/capa.sym} 1060 -450 0 0 {name=Cintegrate
 m=1
-value=1p}
+value=100n}
 C {devices/opin.sym} 1260 -640 0 0 {name=p3 lab=isi}
 C {devices/switch_ngspice.sym} 660 -460 0 1 {name=Sreset1 model=SWITCH1}
 C {devices/vcvs.sym} 1780 -220 0 0 {name=Eswref value=0.5}
@@ -176,7 +176,7 @@ C {devices/lab_pin.sym} 780 -440 0 1 {name=l13 lab=out4}
 C {devices/lab_pin.sym} 780 -460 0 1 {name=l14 lab=out3}
 C {devices/switch_ngspice.sym} 550 -460 0 0 {name=Sinit1 model=SWITCH1}
 C {devices/switch_ngspice.sym} 1180 -460 0 1 {name=Sinit2 model=SWITCH1}
-C {devices/vsource.sym} 420 -260 0 0 {name=Vpor value="pwl(0 0 10n 1.8)"
+C {devices/vsource.sym} 420 -260 0 0 {name=Vpor value="dc 0 pwl(0 0 10u 1.8)"
 }
 C {devices/lab_pin.sym} 1260 -460 0 1 {name=l16 lab=swref}
 C {devices/lab_pin.sym} 480 -460 0 0 {name=l17 lab=swref}
