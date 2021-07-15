@@ -63,10 +63,10 @@ N 380 -80 460 -80 { lab=0}
 N 560 -260 680 -260 { lab=sens}
 N 520 -80 680 -80 { lab=0}
 N 680 -310 680 -260 { lab=sens}
-N 680 -390 680 -370 { lab=#net2}
+N 680 -390 680 -370 { lab=#net1}
 N 840 -100 840 -80 { lab=0}
-N 840 -510 840 -370 {}
-N 840 -310 840 -160 {}
+N 840 -510 840 -370 { lab=#net2}
+N 840 -310 840 -160 { lab=neuronin}
 C {devices/code_shown.sym} 0 -670 0 0 {name=ngspice 
 only_toplevel=true 
 value="
@@ -75,8 +75,14 @@ value="
 .control
 save all
 op
+write RegulatedCascodeBias_op.raw
+dc Vpressure 1 200 1 Vneuronin 0 1.6 0.4
+write RegulatedCascodeBias.raw
+plot sens gcasc mir
+plot sens
 plot vsens#branch
 plot vin#branch
+plot vsens#branch/vin#branch
 .endc
 "}
 C {devices/lab_pin.sym} 380 -80 0 0 {name=l11 lab=0}
