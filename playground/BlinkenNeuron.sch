@@ -1,20 +1,4 @@
-v {xschem version=2.9.9 file_version=1.2 
-
-* Copyright 2020 Stefan Frederik Schippers
-* 
-* Licensed under the Apache License, Version 2.0 (the "License");
-* you may not use this file except in compliance with the License.
-* You may obtain a copy of the License at
-*
-*     https://www.apache.org/licenses/LICENSE-2.0
-*
-* Unless required by applicable law or agreed to in writing, software
-* distributed under the License is distributed on an "AS IS" BASIS,
-* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-* See the License for the specific language governing permissions and
-* limitations under the License.
-
-}
+v {xschem version=2.9.9 file_version=1.2 }
 G {}
 K {}
 V {}
@@ -82,8 +66,8 @@ N 800 -510 800 -500 { lab=#net18}
 N 800 -440 800 -420 { lab=mem}
 N 960 -580 960 -570 { lab=#net19}
 N 960 -660 960 -640 { lab=out}
-N 1280 -440 1280 -320 { lab=reset}
-N 1280 -630 1280 -500 { lab=#net20}
+N 1280 -510 1280 -320 { lab=reset}
+N 1280 -630 1280 -570 { lab=#net20}
 N 960 -660 990 -660 { lab=out}
 N 1050 -660 1080 -660 { lab=#net21}
 N 640 -290 640 -210 { lab=#net22}
@@ -100,6 +84,10 @@ N 320 -540 610 -540 { lab=pressure}
 N 320 -540 320 -210 { lab=pressure}
 N 320 -150 320 -120 { lab=0}
 N 320 -120 480 -120 { lab=0}
+N 960 -480 1580 -480 { lab=dn}
+N 1640 -430 1640 -120 { lab=0}
+N 1280 -120 1640 -120 { lab=0}
+N 1700 -480 1760 -480 { lab=isi}
 C {devices/code_shown.sym} 0 -890 0 0 {name=ngspice 
 only_toplevel=true 
 value=" 
@@ -112,6 +100,7 @@ plot mem dn dp out slowout reset
 plot Vin#branch Vout#branch Vlatchup#branch 
 +Vreset#branch Vslowout#branch Vcap#branch
 +Vdischarge#branch
+plot dn isi
 write BllinkenNeuron.raw
 wrdata BlinkenNeuron.csv mem dn dp out slowout reset
 .endc
@@ -202,7 +191,7 @@ C {devices/lab_pin.sym} 960 -480 0 0 {name=l8 lab=dn}
 C {devices/lab_pin.sym} 800 -600 0 0 {name=l9 lab=dp}
 C {devices/ammeter.sym} 800 -470 0 0 {name=Vlatchup}
 C {devices/ammeter.sym} 960 -610 0 0 {name=Vout}
-C {devices/ammeter.sym} 1280 -470 0 0 {name=Vreset}
+C {devices/ammeter.sym} 1280 -540 0 0 {name=Vreset}
 C {devices/ammeter.sym} 1020 -660 3 0 {name=Vslowout}
 C {devices/ammeter.sym} 640 -180 0 0 {name=Vcap}
 C {devices/ammeter.sym} 800 -180 0 0 {name=Vdischarge}
@@ -210,3 +199,5 @@ C {/home/cmaier/.xschem/sky130_TAC3/circuits/piezoresistor.sym} 730 -530 0 0 {na
 C {devices/vsource.sym} 320 -180 0 1 {name=Vpressure value="50 pwl(0 50 2 1)"
 }
 C {devices/lab_pin.sym} 320 -540 0 0 {name=l10 lab=pressure}
+C {/home/cmaier/.xschem/sky130_TAC3/playground/InterServicesIntelligence.sym} 1640 -470 0 0 {name=x1}
+C {devices/lab_pin.sym} 1760 -480 0 1 {name=l11 lab=isi}
