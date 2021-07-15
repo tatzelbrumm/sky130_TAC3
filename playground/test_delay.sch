@@ -38,7 +38,7 @@ value="
 .option savecurrents
 .control
 save all
-tran 10u 2m
+tran 10n 3m
 write test_delay.raw
 plot in out
 plot -Vdd#branch
@@ -59,7 +59,7 @@ C {devices/vsource.sym} 380 -150 0 1 {name=Vdd value=1.8
 C {devices/lab_pin.sym} 380 -320 0 0 {name=l2 lab=vdd}
 C {devices/title.sym} 160 0 0 0 {name=l5 author="Christoph Maier"}
 C {schmittinv.sym} 540 -220 0 0 {name=xdut}
-C {devices/vsource.sym} 460 -150 0 0 {name=Vin value="pwl(0 0 1m 1.8 2m 0)"
+C {devices/vsource.sym} 460 -150 0 0 {name=Vin value="pwl(0 0 499.999u 0 500u 1.8 999.999u 1.8 1m 0 2m 1.8 3m 0)"
 }
 C {devices/lab_pin.sym} 460 -220 0 0 {name=l3 lab=in}
 C {devices/lab_pin.sym} 620 -220 0 1 {name=l4 lab=out}
