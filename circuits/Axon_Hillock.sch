@@ -85,7 +85,7 @@ N 680 -410 680 -380 { lab=mir}
 N 520 -500 660 -500 { lab=vdd}
 N 520 -500 520 -470 { lab=vdd}
 N 520 -320 520 -290 { lab=gcasc}
-N 520 -230 520 -80 { lab=vss}
+N 520 -160 520 -80 { lab=vss}
 N 700 -80 840 -80 { lab=vss}
 N 680 -380 680 -350 { lab=mir}
 N 520 -320 640 -320 { lab=gcasc}
@@ -98,14 +98,13 @@ N 500 -80 520 -80 { lab=vss}
 N 380 -500 520 -500 { lab=vdd}
 N 380 -500 380 -470 { lab=vdd}
 N 380 -410 380 -80 { lab=vss}
-N 380 -80 500 -80 { lab=vss}
+N 460 -80 500 -80 { lab=vss}
 N 720 -440 740 -440 { lab=mir}
 N 520 -410 520 -320 { lab=gcasc}
-N 680 -80 700 -80 { lab=vss}
-N 520 -80 680 -80 { lab=vss}
+N 580 -80 700 -80 { lab=vss}
 N 840 -410 840 -380 { lab=#net1}
 N 840 -320 840 -280 { lab=mem}
-N 560 -260 600 -260 { lab=#net2}
+N 580 -260 600 -260 { lab=#net2}
 N 660 -260 680 -260 { lab=sens}
 N 520 -160 550 -160 { lab=vss}
 N 460 -100 460 -80 { lab=vss}
@@ -113,6 +112,18 @@ N 580 -260 580 -230 { lab=#net2}
 N 580 -110 580 -80 { lab=vss}
 N 460 -180 550 -180 { lab=pressure}
 N 460 -180 460 -160 { lab=pressure}
+N 1420 -500 1420 -340 { lab=vdd}
+N 1260 -500 1420 -500 { lab=vdd}
+N 1260 -80 1420 -80 { lab=vss}
+N 520 -230 520 -160 { lab=vss}
+N 380 -80 460 -80 { lab=vss}
+N 560 -260 580 -260 { lab=#net2}
+N 520 -80 580 -80 { lab=vss}
+N 1420 -240 1420 -80 { lab=vss}
+N 1240 -300 1360 -300 { lab=out}
+N 1340 -280 1360 -280 { lab=vdd}
+N 1340 -500 1340 -280 { lab=vdd}
+N 1480 -300 1520 -300 { lab=isi}
 C {devices/code_shown.sym} 0 -670 0 0 {name=ngspice 
 only_toplevel=true 
 value="
@@ -121,14 +132,16 @@ value="
 vvss vss 0 0
 .control
 save all
+op
+write Axon_hillock_op.raw
 tran 10n 5m
 write Axon_hillock.raw
 plot mem out sens gcasc mir inv
+plot out isi
+plot pressure isi
 *plot "Input"
 plot vsens#branch
 plot vin#branch
-op
-write Axon_hillock_op.raw
 wrdata spikes_AH.csv out
 
 .endc
@@ -233,3 +246,6 @@ C {devices/title.sym} 160 0 0 0 {name=l5 author="Sahil?, Christoph Maier"}
 C {/home/cmaier/.xschem/sky130_TAC3/circuits/piezoresistor.sym} 670 -170 0 0 {name=x1}
 C {devices/vsource.sym} 460 -130 0 1 {name=Vpressure value="50 pwl(0 1 2m 140 4m 1)"}
 C {devices/lab_pin.sym} 460 -180 0 0 {name=l6 lab=pressure}
+C {../playground/InterServicesIntelligence.sym} 1420 -300 0 0 {name=xisi}
+C {devices/lab_pin.sym} 1520 -300 2 0 {name=l7 lab=isi
+}
