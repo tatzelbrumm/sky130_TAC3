@@ -90,7 +90,8 @@ N 1280 -120 1640 -120 { lab=0}
 N 1700 -480 1760 -480 { lab=isi}
 C {devices/code_shown.sym} 0 -890 0 0 {name=ngspice 
 only_toplevel=true 
-value=" 
+value="
+.model switch1 sw vt=0 vh=1m ron=1m roff=1G 
 .option savecurrents
 .control
 save all
