@@ -119,7 +119,8 @@ C {devices/code_shown.sym} 0 -800 0 0 {name=ngspice
 only_toplevel=false 
 value="
 .model switch1 sw vt=1.2 vh=0 ron=1 roff=1e9
-.options gmin=1e-15 abstol=1p trtol=1 chgtol=1e-16
+.options trtol=1 chgtol=1e-14
+*.options gmin=1e-15 abstol=1p trtol=1 chgtol=1e-16
 "}
 C {devices/title.sym} 160 0 0 0 {name=l5 author="Christoph Maier"}
 C {schmittinv.sym} 620 -220 0 0 {name=xdut1}
