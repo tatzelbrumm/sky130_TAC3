@@ -1,0 +1,147 @@
+**.subckt BlinkenNeuron
+XM1 dn mem 0 0 sky130_fd_pr__nfet_01v8 L=0.15 W=10 nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29'
++ pd='2*int((nf+1)/2) * (W/nf + 0.29)' ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W'
++ sa=0 sb=0 sd=0 mult=200 m=200 
+C2 vdd slowout 2u m=1
+Vdd vdd 0 1.8 pwl(0 0 1m 1.8)
+C1 mem net22 100u m=1
+Vin vdd net24 0
+XM3 dp out vdd vdd sky130_fd_pr__pfet_01v8 L=0.15 W=10 nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29'
++ pd='2*int((nf+1)/2) * (W/nf + 0.29)' ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W'
++ sa=0 sb=0 sd=0 mult=2000 m=2000 
+R2 reset 0 10k m=1
+XM2 mem reset net23 0 sky130_fd_pr__nfet_01v8 L=0.15 W=10 nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29'
++ pd='2*int((nf+1)/2) * (W/nf + 0.29)' ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W'
++ sa=0 sb=0 sd=0 mult=2000 m=2000 
+R6 net19 dn 100 m=1
+R1 vdd out 330 m=1
+R5 slowout net21 33k m=1
+XM4 net20 slowout vdd vdd sky130_fd_pr__pfet_01v8 L=0.15 W=10 nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29'
++ pd='2*int((nf+1)/2) * (W/nf + 0.29)' ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W'
++ sa=0 sb=0 sd=0 mult=200 m=200 
+R4 dp net18 500 m=1
+Vlatchup net18 mem 0
+Vout out net19 0
+Vreset net20 reset 0
+Vslowout out net21 0
+Vcap net22 0 0
+Vdischarge net23 0 0
+xR3 pressure 0 net24 mem piezoresistor
+Vpressure pressure 0 50 pwl(0 50 2 1)
+x1 isi vdd vdd dn 0 InterServicesIntelligence
+**** begin user architecture code
+
+
+*.model switch1 sw vt=0 vh=1m ron=1m roff=1G
+.option savecurrents
+.control
+save all
+tran 100u 2
+plot v(vdd,mem)/Vin#branch
+plot mem dn dp out slowout reset
+plot Vin#branch Vout#branch Vlatchup#branch  Vreset#branch Vslowout#branch Vcap#branch
++ Vdischarge#branch
+plot dn isi
+write BllinkenNeuron.raw
+wrdata BlinkenNeuron.csv mem dn dp out slowout reset
+.endc
+
+
+ .lib /media/cmaier/4TBext4bak/EDA/skywater-pdk/libraries/sky130_fd_pr_ngspice/latest/models/sky130.lib.spice tt
+
+.param mc_mm_switch=0
+.param mc_pr_switch=1
+
+
+**** end user architecture code
+**.ends
+
+* expanding   symbol:  /home/cmaier/.xschem/sky130_TAC3/circuits/piezoresistor.sym # of pins=4
+* sym_path: /home/cmaier/.xschem/sky130_TAC3/circuits/piezoresistor.sym
+* sch_path: /home/cmaier/.xschem/sky130_TAC3/circuits/piezoresistor.sch
+.subckt piezoresistor  pressure_pos pressure_neg resistor_pos resistor_neg
+*.ipin pressure_pos
+*.ipin pressure_neg
+*.iopin resistor_pos
+*.iopin resistor_neg
+Broot sqrtp 0 V = sqrt(v(pressure_pos,pressure_neg))
+Bres res 0 V = 106*(50/v(sqrtp)-1)*exp(-0.328*v(sqrtp))+15
+Brvar resistor_pos resistor_neg I = V(resistor_pos,resistor_neg)/V(res)
+.ends
+
+
+* expanding   symbol:  /home/cmaier/.xschem/sky130_TAC3/playground/InterServicesIntelligence.sym #
+*+ of pins=5
+* sym_path: /home/cmaier/.xschem/sky130_TAC3/playground/InterServicesIntelligence.sym
+* sch_path: /home/cmaier/.xschem/sky130_TAC3/playground/InterServicesIntelligence.sch
+.subckt InterServicesIntelligence  isi resetb vdd spike gnd
+*.iopin vdd
+*.iopin gnd
+*.ipin spike
+*.opin isi
+*.ipin resetb
+**** begin user architecture code
+
+
+.model switch1 sw vt=1.2 vh=0 ron=1 roff=1e9
+.options trtol=1 chgtol=1e-14
+*.options gmin=1e-15 abstol=1p trtol=1 chgtol=1e-16
+
+
+**** end user architecture code
+xdut1 vdd spike outb1 gnd schmittinv
+xdut2 vdd outb1 out1 gnd schmittinv
+xdut3 vdd out1 outb2 gnd schmittinv
+xdut4 vdd outb2 out2 gnd schmittinv
+Csample sample gnd 10n m=1
+Itiming gnd sample dc 0 pwl(0 0 1u 10u)
+Cintegrate isi gnd 10n m=1
+Sreset1 sample gnd out3 out4 SWITCH1
+Eswref swref gnd vdd gnd 0.5
+Son1 sample isi out1 out2 SWITCH1
+Sinit1 sample gnd swref resetb SWITCH1
+Sinit2 isi gnd swref resetb SWITCH1
+xdut5 vdd out2 outb3 gnd schmittinv
+xdut6 vdd outb3 out3 gnd schmittinv
+xdut7 vdd out3 outb4 gnd schmittinv
+xdut8 vdd outb4 out4 gnd schmittinv
+.ends
+
+
+* expanding   symbol:  schmittinv.sym # of pins=4
+* sym_path: /home/cmaier/.xschem/sky130_TAC3/playground/schmittinv.sym
+* sch_path: /home/cmaier/.xschem/sky130_TAC3/playground/schmittinv.sch
+.subckt schmittinv  vdd in out vss
+*.iopin vdd
+*.iopin vss
+*.ipin in
+*.opin out
+XM1 dn in vss vss sky130_fd_pr__nfet_01v8 L=32 W=0.5 nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29'
++ pd='2*int((nf+1)/2) * (W/nf + 0.29)' ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W'
++ sa=0 sb=0 sd=0 mult=1 m=1 
+XM5 dp in vdd vdd sky130_fd_pr__pfet_01v8 L=8 W=0.5 nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29'
++ pd='2*int((nf+1)/2) * (W/nf + 0.29)' ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W'
++ sa=0 sb=0 sd=0 mult=1 m=1 
+XM3 vdd out dn vss sky130_fd_pr__nfet_01v8 L=96 W=0.5 nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29'
++ pd='2*int((nf+1)/2) * (W/nf + 0.29)' ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W'
++ sa=0 sb=0 sd=0 mult=1 m=1 
+XM6 vss out dp vdd sky130_fd_pr__pfet_01v8 L=16 W=0.5 nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29'
++ pd='2*int((nf+1)/2) * (W/nf + 0.29)' ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W'
++ sa=0 sb=0 sd=0 mult=1 m=1 
+XM4 out in dp vdd sky130_fd_pr__pfet_01v8 L=8 W=0.5 nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29'
++ pd='2*int((nf+1)/2) * (W/nf + 0.29)' ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W'
++ sa=0 sb=0 sd=0 mult=1 m=1 
+XM2 out in dn vss sky130_fd_pr__nfet_01v8 L=32 W=0.5 nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29'
++ pd='2*int((nf+1)/2) * (W/nf + 0.29)' ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W'
++ sa=0 sb=0 sd=0 mult=1 m=1 
+.ends
+
+** flattened .save nodes
+.save I(Vin)
+.save I(Vlatchup)
+.save I(Vout)
+.save I(Vreset)
+.save I(Vslowout)
+.save I(Vcap)
+.save I(Vdischarge)
+.end
