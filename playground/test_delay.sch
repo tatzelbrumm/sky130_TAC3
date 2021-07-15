@@ -37,14 +37,62 @@ N 780 -200 780 -80 { lab=0}
 N 780 -320 780 -240 { lab=vdd}
 N 900 -200 900 -80 { lab=0}
 N 900 -320 900 -240 { lab=vdd}
-N 540 -80 900 -80 { lab=0}
-N 540 -320 900 -320 { lab=vdd}
+N 780 -80 900 -80 { lab=0}
+N 780 -320 900 -320 { lab=vdd}
 N 580 -220 620 -220 { lab=out1}
 N 700 -220 740 -220 { lab=out2}
 N 820 -220 860 -220 { lab=out3}
+N 380 -660 380 -640 { lab=sample}
+N 380 -740 380 -720 { lab=0}
+N 380 -420 380 -400 { lab=0}
+N 380 -640 380 -480 { lab=sample}
+N 900 -420 900 -400 { lab=0}
+N 900 -640 900 -480 { lab=isi}
+N 500 -640 500 -570 { lab=sample}
+N 380 -400 500 -400 { lab=0}
+N 500 -400 900 -400 { lab=0}
+N 540 -80 660 -80 { lab=0}
+N 540 -320 660 -320 { lab=vdd}
+N 660 -80 780 -80 { lab=0}
+N 660 -320 780 -320 { lab=vdd}
+N 500 -510 500 -490 { lab=#net1}
+N 500 -430 500 -400 { lab=0}
+N 1120 -240 1140 -240 { lab=vdd}
+N 1120 -320 1120 -240 { lab=vdd}
+N 900 -320 1120 -320 { lab=vdd}
+N 1120 -200 1140 -200 { lab=0}
+N 1120 -200 1120 -80 { lab=0}
+N 900 -80 1120 -80 { lab=0}
+N 1180 -190 1180 -80 { lab=0}
+N 1120 -80 1180 -80 { lab=0}
+N 1180 -280 1180 -250 { lab=swref}
+N 1180 -280 1220 -280 { lab=swref}
+N 770 -640 790 -640 { lab=#net2}
+N 900 -640 990 -640 { lab=isi}
+N 850 -640 900 -640 { lab=isi}
+N 380 -640 500 -640 { lab=sample}
+N 500 -640 710 -640 { lab=sample}
+N 300 -740 380 -740 { lab=0}
+N 300 -740 300 -400 { lab=0}
+N 300 -400 380 -400 { lab=0}
+N 300 -400 300 -80 { lab=0}
+N 300 -80 380 -80 { lab=0}
+N 540 -540 580 -540 { lab=swref}
+N 580 -560 580 -540 { lab=swref}
+N 580 -560 740 -560 { lab=swref}
+N 740 -600 740 -560 { lab=swref}
+N 740 -560 820 -560 { lab=swref}
+N 820 -600 820 -560 { lab=swref}
+N 580 -540 580 -460 { lab=swref}
+N 540 -460 580 -460 { lab=swref}
+N 840 -600 840 -530 { lab=out1}
+N 760 -600 760 -530 { lab=out2}
+N 540 -520 620 -520 { lab=out4}
+N 540 -440 620 -440 { lab=out3}
 C {devices/code_shown.sym} 0 -470 0 0 {name=ngspice 
 only_toplevel=true 
 value="
+.model switch1 sw vt=0 vh=1m ron=1m roff=1G
 .options gmin=1e-15 abstol=1p
 .option savecurrents
 .control
@@ -80,3 +128,23 @@ C {schmittinv.sym} 900 -220 0 0 {name=xdut4}
 C {devices/lab_pin.sym} 600 -220 1 0 {name=l6 lab=out1}
 C {devices/lab_pin.sym} 720 -220 1 0 {name=l7 lab=out2}
 C {devices/lab_pin.sym} 840 -220 1 0 {name=l8 lab=out3}
+C {devices/capa.sym} 380 -450 0 0 {name=Csample
+m=1
+value=10n}
+C {devices/isource.sym} 380 -690 0 1 {name=Itiming value=1u}
+C {devices/lab_pin.sym} 380 -550 0 0 {name=l9 lab=sample}
+C {devices/switch_ngspice.sym} 740 -640 3 0 {name=Son2 model=SWITCH1}
+C {devices/capa.sym} 900 -450 0 0 {name=Cintegrate
+m=1
+value=1p}
+C {devices/opin.sym} 990 -640 0 0 {name=p3 lab=isi}
+C {devices/switch_ngspice.sym} 500 -540 0 1 {name=Sreset2 model=SWITCH1}
+C {devices/switch_ngspice.sym} 500 -460 0 1 {name=Sreset1 model=SWITCH1}
+C {devices/vcvs.sym} 1180 -220 0 0 {name=Eswref value=0.5}
+C {devices/lab_pin.sym} 1220 -280 0 1 {name=l10 lab=swref}
+C {devices/switch_ngspice.sym} 820 -640 3 0 {name=Son1 model=SWITCH1}
+C {devices/lab_pin.sym} 840 -530 3 0 {name=l11 lab=out1}
+C {devices/lab_pin.sym} 760 -530 3 0 {name=l12 lab=out2}
+C {devices/lab_pin.sym} 620 -520 0 1 {name=l13 lab=out4}
+C {devices/lab_pin.sym} 620 -440 0 1 {name=l14 lab=out3}
+C {devices/lab_pin.sym} 580 -560 0 0 {name=l15 lab=swref}
