@@ -78,7 +78,7 @@ model=nfet_01v8
 spiceprefix=X
 }
 C {sky130_fd_pr/pfet_01v8.sym} 440 -460 0 0 {name=M5
-L=16
+L=8
 W=0.5
 nf=1 mult=1
 model=pfet_01v8
@@ -92,7 +92,7 @@ model=nfet_01v8
 spiceprefix=X
 }
 C {sky130_fd_pr/pfet_01v8.sym} 640 -380 0 1 {name=M6
-L=48
+L=16
 W=0.5
 nf=1 mult=1
 model=pfet_01v8
@@ -102,7 +102,7 @@ C {devices/lab_pin.sym} 620 -180 2 0 {name=l2 lab=dn
 }
 C {devices/title.sym} 160 0 0 0 {name=l5 author="Christoph Maier"}
 C {sky130_fd_pr/pfet_01v8.sym} 440 -380 0 0 {name=M4
-L=16
+L=8
 W=0.5
 nf=1 mult=1
 model=pfet_01v8
