@@ -88,10 +88,14 @@ N 960 -480 1580 -480 { lab=dn}
 N 1640 -430 1640 -120 { lab=0}
 N 1280 -120 1640 -120 { lab=0}
 N 1700 -480 1760 -480 { lab=isi}
+N 1300 -840 1640 -840 { lab=vdd}
+N 1640 -840 1640 -520 { lab=vdd}
+N 1560 -460 1580 -460 { lab=vdd}
+N 1560 -840 1560 -460 { lab=vdd}
 C {devices/code_shown.sym} 0 -890 0 0 {name=ngspice 
 only_toplevel=true 
 value="
-.model switch1 sw vt=0 vh=1m ron=1m roff=1G 
+*.model switch1 sw vt=0 vh=1m ron=1m roff=1G 
 .option savecurrents
 .control
 save all
@@ -200,5 +204,5 @@ C {/home/cmaier/.xschem/sky130_TAC3/circuits/piezoresistor.sym} 730 -530 0 0 {na
 C {devices/vsource.sym} 320 -180 0 1 {name=Vpressure value="50 pwl(0 50 2 1)"
 }
 C {devices/lab_pin.sym} 320 -540 0 0 {name=l10 lab=pressure}
-C {/home/cmaier/.xschem/sky130_TAC3/playground/InterServicesIntelligence.sym} 1640 -470 0 0 {name=x1}
+C {/home/cmaier/.xschem/sky130_TAC3/playground/InterServicesIntelligence.sym} 1640 -480 0 0 {name=x1}
 C {devices/lab_pin.sym} 1760 -480 0 1 {name=l11 lab=isi}
