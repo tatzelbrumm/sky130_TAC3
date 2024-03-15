@@ -1,4 +1,5 @@
-v {xschem version=2.9.9 file_version=1.2 }
+v {xschem version=3.4.5 file_version=1.2
+}
 G {}
 K {}
 V {}
@@ -103,14 +104,14 @@ model=pfet_01v8
 spiceprefix=X
 }
 C {sky130_fd_pr/nfet_01v8.sym} 880 -160 0 0 {name=M16
-L=80
+L=20
 W=1  
 nf=1 mult=1
 model=nfet_01v8
 spiceprefix=X
 }
 C {sky130_fd_pr/nfet_01v8.sym} 600 -160 0 1 {name=M15
-L=80
+L=20
 W=1
 nf=1 mult=1
 model=nfet_01v8
